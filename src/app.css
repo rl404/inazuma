@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	a:hover {
+		@apply text-neutral-500;
+	}
+}
+
+@font-face {
+	font-family: 'WildWords';
+	src: url('/fonts/CC Wild Words Roman.ttf');
+}
+
+body {
+	font-family: 'WildWords';
+}
