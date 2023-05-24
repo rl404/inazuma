@@ -69,7 +69,7 @@
 		<div>{manga.chapter.toLocaleString()}</div>
 	</div>
 
-	<div class="col-span-6 border-2 border-black p-1 grid grid-cols-2">
+	<div class="col-span-9 border-2 border-black p-1 grid grid-cols-3">
 		<div>
 			<div class="text-xs text-neutral-400">Rank</div>
 			<div>#{manga.rank.toLocaleString()}</div>
@@ -79,6 +79,10 @@
 			<div>#{manga.popularity.toLocaleString()}</div>
 		</div>
 		<div>
+			<div class="text-xs text-neutral-400">Score</div>
+			<div>{manga.mean.toFixed(2)}</div>
+		</div>
+		<div>
 			<div class="text-xs text-neutral-400">Member</div>
 			<div>{manga.member.toLocaleString()}</div>
 		</div>
@@ -86,12 +90,9 @@
 			<div class="text-xs text-neutral-400">Voter</div>
 			<div>{manga.voter.toLocaleString()}</div>
 		</div>
-	</div>
-
-	<div class="col-span-3 border-2 border-black p-1 flex items-center justify-center">
 		<div>
-			<div class="text-xs text-center text-neutral-400">Score</div>
-			<div class="text-xl text-center">{manga.mean.toFixed(2)}</div>
+			<div class="text-xs text-neutral-400">Favorite</div>
+			<div>{manga.favorite.toLocaleString()}</div>
 		</div>
 	</div>
 
@@ -144,7 +145,6 @@
 
 		<div class="col-span-9">
 			<div class="grid grid-cols-2 gap-1">
-				<div class="col-span-2 text-xs text-neutral-400 text-center">Related Manga</div>
 				{#if manga.related.length === 0}
 					<div class="col-span-2 border-2 border-black text-center text-xs">no related manga</div>
 				{/if}
