@@ -20,7 +20,10 @@
 </script>
 
 <div class="grid grid-cols-5 gap-1">
-	<div class="col-span-5">Top Light Novel</div>
+	<div class="col-span-5 flex items-center justify-between">
+		<div>Top Light Novel</div>
+		<a href="/manga?type=LIGHT_NOVEL&sort=-mean" class="text-xs text-neutral-400">more</a>
+	</div>
 	{#if loading}
 		<div class="col-span-5">
 			<SpinnerIcon class="w-6 h-6 animate-spin text-neutral-200 fill-black mx-auto" />

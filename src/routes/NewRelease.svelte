@@ -22,7 +22,12 @@
 </script>
 
 <div class="grid grid-cols-5 gap-1">
-	<div class="col-span-5">New Release</div>
+	<div class="col-span-5 flex items-center justify-between">
+		<div>New Release</div>
+		<a href="/manga?end_date={today}&nsfw=false&sort=-start_date" class="text-xs text-neutral-400"
+			>more</a
+		>
+	</div>
 	{#if loading}
 		<div class="col-span-5">
 			<SpinnerIcon class="w-6 h-6 animate-spin text-neutral-200 fill-black mx-auto" />
