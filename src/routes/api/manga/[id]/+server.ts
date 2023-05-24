@@ -30,6 +30,7 @@ export type mangaResponseData = {
 	popularity: number;
 	member: number;
 	voter: number;
+	favorite: number;
 	genres: {
 		id: number;
 		name: string;

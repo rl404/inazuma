@@ -6,6 +6,7 @@
 	export { className as class };
 	let className = '';
 	export let style: string = '';
+	export let title: string = '';
 
 	let done: boolean = false;
 	let isVisible: boolean = false;
@@ -27,7 +28,7 @@
 	});
 </script>
 
-<div class={className} {style} bind:this={element} on:click={() => dispatch('click')}>
+<div class={className} {title} {style} bind:this={element} on:click={() => dispatch('click')}>
 	{#if isVisible || done}
 		<slot />
 	{/if}
