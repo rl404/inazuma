@@ -4,7 +4,7 @@
 </script>
 
 <div class="inline-flex items-center justify-center w-full {className}">
-	<hr class="w-full h-px border-0 bg-neutral-200 dark:bg-neutral-600" />
+	<hr class="w-full h-px border-0 bg-neutral-200" />
 	<slot />
-	<hr class="w-full h-px border-0 bg-neutral-200 dark:bg-neutral-600" />
+	<hr class="w-full h-px border-0 bg-neutral-200" />
 </div>

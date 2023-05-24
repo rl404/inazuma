@@ -29,7 +29,11 @@
 <svelte:window on:scroll={onScroll} />
 
 <div class="fixed right-0 bottom-0 p-5" title="scroll to top" class:hidden>
-	<button type="button" class="bg-white hover:opacity-70 p-3 rounded-full" on:click={onClick}>
+	<button
+		type="button"
+		class="bg-white border border-black hover:opacity-70 p-3 rounded-full"
+		on:click={onClick}
+	>
 		<ChevronUpIcon class="w-4 h-4" />
 	</button>
 </div>
