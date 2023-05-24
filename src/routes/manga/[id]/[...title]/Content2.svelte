@@ -39,7 +39,7 @@
 	</div>
 
 	<div
-		class="col-span-6 border-2 border-black p-1 grid grid-cols-2 bg-gradient-to-t from-red-100 to-white"
+		class="col-span-6 border-2 border-black p-1 grid grid-cols-2 bg-gradient-to-t from-red-100 to-white dark:from-red-900 dark:to-black"
 	>
 		<div>
 			<div class="text-xs text-neutral-400">Type</div>
@@ -52,7 +52,7 @@
 	</div>
 
 	<div
-		class="col-span-6 border-2 border-black p-1 grid grid-cols-2 bg-gradient-to-t from-red-100 to-white"
+		class="col-span-6 border-2 border-black p-1 grid grid-cols-2 bg-gradient-to-t from-red-100 to-white dark:from-red-900 dark:to-black"
 	>
 		<div>
 			<div class="text-xs text-neutral-400">Start Date</div>
@@ -66,7 +66,9 @@
 		</div>
 	</div>
 
-	<div class="col-span-3 border-2 border-black p-1 grid bg-gradient-to-t from-orange-100 to-white">
+	<div
+		class="col-span-3 border-2 border-black p-1 grid bg-gradient-to-t from-orange-100 to-white dark:from-orange-900 dark:to-black"
+	>
 		<div class="text-xs text-neutral-400">Volume</div>
 		<div>{manga.volume.toLocaleString()}</div>
 		<div class="text-xs text-neutral-400">Chapter</div>
@@ -74,7 +76,7 @@
 	</div>
 
 	<div
-		class="col-span-9 border-2 border-black p-1 grid grid-cols-3 bg-gradient-to-t from-orange-100 to-white"
+		class="col-span-9 border-2 border-black p-1 grid grid-cols-3 bg-gradient-to-t from-orange-100 to-white dark:from-orange-900 dark:to-black"
 	>
 		<div>
 			<div class="text-xs text-neutral-400">Rank</div>
@@ -105,7 +107,9 @@
 	<div class="col-span-12 grid grid-cols-12 gap-1">
 		<div class="col-span-3 text-xs">
 			<div class="grid gap-1">
-				<div class="border-2 border-black p-1 bg-gradient-to-t from-yellow-100 to-white">
+				<div
+					class="border-2 border-black p-1 bg-gradient-to-t from-yellow-100 to-white dark:from-yellow-900 dark:to-black"
+				>
 					<div class="grid">
 						<div class="text-xs text-neutral-400">Authors</div>
 						{#if manga.authors.length === 0} <div>-</div> {/if}
@@ -119,7 +123,9 @@
 					</div>
 				</div>
 
-				<div class="border-2 border-black p-1 bg-gradient-to-t from-green-100 to-white">
+				<div
+					class="border-2 border-black p-1 bg-gradient-to-t from-green-100 to-white dark:from-green-900 dark:to-black"
+				>
 					<div class="grid">
 						<div class="text-xs text-neutral-400">Serialization</div>
 						{#if manga.serialization.length === 0} <div>-</div> {/if}
@@ -133,7 +139,9 @@
 					</div>
 				</div>
 
-				<div class="border-2 border-black p-1 bg-gradient-to-t from-blue-100 to-white">
+				<div
+					class="border-2 border-black p-1 bg-gradient-to-t from-blue-100 to-white dark:from-blue-900 dark:to-black"
+				>
 					<div class="grid">
 						<div class="text-xs text-neutral-400">Genres</div>
 						{#if manga.genres.length === 0} <div>-</div> {/if}
@@ -153,14 +161,14 @@
 			<div class="grid grid-cols-2 gap-1">
 				{#if manga.related.length === 0}
 					<div
-						class="col-span-2 border-2 border-black text-center text-xs bg-gradient-to-t from-purple-100 to-white"
+						class="col-span-2 border-2 border-black text-center text-xs bg-gradient-to-t from-purple-100 to-white dark:from-purple-900 dark:to-black"
 					>
 						no related manga
 					</div>
 				{/if}
 				{#each manga.related as related}
 					<RenderIfVisible
-						class="border-2 border-black aspect-video bg-gradient-to-t from-purple-100 to-white"
+						class="border-2 border-black aspect-video bg-gradient-to-t from-purple-100 to-white dark:from-purple-900 dark:to-black"
 					>
 						<a
 							href="/manga/{related.id}/{related.title}"
@@ -172,7 +180,7 @@
 								<Image
 									src={related.picture}
 									alt={related.title}
-									class="w-full h-full outline outline-1 outline-black bg-neutral-200 object-cover"
+									class="w-full h-full outline outline-1 outline-black bg-neutral-200 dark:bg-neutral-700 object-cover"
 								/>
 							</div>
 							<div class="col-span-2">

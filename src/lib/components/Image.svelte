@@ -29,7 +29,7 @@
 
 {#if src === ''}
 	<div
-		class="aspect-square text-base text-center flex items-center justify-center overflow-hidden {className}"
+		class="aspect-square text-center flex items-center justify-center overflow-hidden {className}"
 	>
 		{alt}
 	</div>
@@ -39,7 +39,7 @@
 	</div>
 {:else if error}
 	<div
-		class="aspect-square text-base text-center flex items-center justify-center overflow-hidden {className}"
+		class="aspect-square text-center flex items-center justify-center overflow-hidden {className}"
 	>
 		{alt}
 	</div>

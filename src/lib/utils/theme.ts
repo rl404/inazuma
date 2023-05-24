@@ -18,14 +18,9 @@ export const setTheme = (mode?: ThemeMode) => {
 
 const getTheme = (): ThemeMode => {
 	let mode = ThemeMode.Light;
-	if (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-		mode = ThemeMode.Dark;
-	}
-
 	if ('theme' in localStorage) {
 		mode = localStorage.theme;
 	}
-
 	return mode;
 };
 

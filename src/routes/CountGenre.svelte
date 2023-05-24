@@ -17,7 +17,10 @@
 	});
 </script>
 
-<a class="relative block w-full h-full bg-gradient-to-t from-orange-200 to-white" href="/genres">
+<a
+	class="relative block w-full h-full bg-gradient-to-t from-orange-200 to-white dark:from-orange-900 dark:to-black"
+	href="/genres"
+>
 	{#if loading}
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
 			<SpinnerIcon class="w-4 h-4 animate-spin text-neutral-200 fill-black " />

@@ -13,7 +13,7 @@
 </script>
 
 <button
-	class="p-1 bg-white hover:bg-neutral-200 border-2 border-black inline-flex items-center {className}"
+	class="p-1 bg-white dark:bg-neutral-600 hover:bg-neutral-200 dark:hover:bg-neutral-400 border-2 border-black inline-flex items-center {className}"
 	type="button"
 	{title}
 	on:click={onClick}

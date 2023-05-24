@@ -37,14 +37,14 @@
 
 	{#if manga.nsfw}
 		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45">
-			<div class="bg-white px-4 py-1 border-2 border-black font-bold">NSFW</div>
+			<div class="bg-white dark:text-black px-4 py-1 border-2 border-black font-bold">NSFW</div>
 		</div>
 	{/if}
 
 	{#if pictures.length > 1}
 		<button
 			on:click={prev}
-			class="absolute bottom-1 left-1 bg-white border border-black hover:opacity-70 rounded-full p-1"
+			class="absolute bottom-1 left-1 bg-white dark:text-black border border-black hover:opacity-70 rounded-full p-1"
 			title="previous picture"
 		>
 			<ChevronLeftIcon class="w-4 h-4" />
@@ -52,7 +52,7 @@
 
 		<button
 			on:click={next}
-			class="absolute bottom-1 right-1 bg-white border border-black hover:opacity-70 rounded-full p-1"
+			class="absolute bottom-1 right-1 bg-white dark:text-black border border-black hover:opacity-70 rounded-full p-1"
 			title="next picture"
 		>
 			<ChevronRightIcon class="w-4 h-4" />

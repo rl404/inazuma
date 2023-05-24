@@ -22,7 +22,7 @@
 <div class="relative {className}">
 	{#if value !== ''}
 		<div
-			class="absolute inset-y-0 right-0 flex items-center pr-2 text-red-500 hover:text-neutral-400 cursor-pointer"
+			class="absolute inset-y-0 right-0 flex items-center pr-2 text-red-500 dark:text-white hover:text-neutral-400 dark:hover:text-neutral-400 cursor-pointer"
 			title="clear search"
 			on:click={resetValue}
 		>
@@ -33,7 +33,7 @@
 	<input
 		{placeholder}
 		type="text"
-		class="w-full pl-1 pr-9 bg-white bg-gradient-to-r from-white to-red-200 border-2 border-black focus:outline-none"
+		class="w-full pl-1 pr-9 bg-gradient-to-r from-white to-red-200 dark:from-neutral-800 dark:to-red-900 border-2 border-black focus:outline-none"
 		bind:value
 		on:keypress={onEnter}
 	/>

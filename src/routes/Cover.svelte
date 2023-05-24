@@ -7,11 +7,11 @@
 	<Image
 		src="/inazuma.png"
 		alt="inazuma"
-		class="w-full h-full object-cover object-center border-2 border-black bg-gradient-to-b from-white to-red-400"
+		class="w-full h-full object-cover object-center border-2 border-black bg-gradient-to-b from-white to-red-400 dark:from-black dark:to-red-900"
 	/>
 
 	<div
-		class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid text-center shadow-white"
+		class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid text-center shadow-white dark:shadow-black"
 	>
 		<div class="text-3xl font-bold text-shadow-sm">INAZUMA</div>
 		<Border />
