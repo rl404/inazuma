@@ -17,4 +17,4 @@ jobs:
         with:
           type: now
           target_branch: vercel
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.CR_PAT }}
