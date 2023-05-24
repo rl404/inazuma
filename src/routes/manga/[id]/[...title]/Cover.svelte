@@ -9,7 +9,7 @@
 <Image
 	src={manga.picture}
 	alt={manga.title}
-	class="absolute w-full h-full object-cover -z-10 grayscale {manga.nsfw && 'blur'}"
+	class="absolute w-full h-full object-cover -z-10 {manga.nsfw && 'blur'}"
 />
 
 <div class="absolute bottom-0 right-0 w-1/2 p-5 text-right">

@@ -7,7 +7,7 @@
 	<Image
 		src="/inazuma.png"
 		alt="inazuma"
-		class="w-full h-full object-cover object-center grayscale border-2 border-black bg-gradient-to-b from-white to-neutral-400"
+		class="w-full h-full object-cover object-center border-2 border-black bg-gradient-to-b from-white to-red-400"
 	/>
 
 	<div

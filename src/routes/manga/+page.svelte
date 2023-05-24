@@ -118,7 +118,7 @@
 				{/if}
 				{#if loading}
 					<div class="col-span-5">
-						<SpinnerIcon class="w-4 h-4 animate-spin text-neutral-200 fill-black " />
+						<SpinnerIcon class="w-5 h-5 animate-spin text-neutral-200 fill-black mx-auto" />
 					</div>
 				{/if}
 				<InfiniteScroll {hasMore} threshold={100} on:loadMore={loadMore} />

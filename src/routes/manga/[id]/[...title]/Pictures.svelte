@@ -32,7 +32,7 @@
 	<Image
 		src={pictures[i]}
 		alt={manga.title}
-		class="w-full h-full object-cover grayscale {manga.nsfw && 'blur'}"
+		class="w-full h-full object-cover {manga.nsfw && 'blur'}"
 	/>
 
 	{#if manga.nsfw}

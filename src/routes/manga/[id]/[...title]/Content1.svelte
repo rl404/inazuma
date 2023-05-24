@@ -36,7 +36,7 @@
 
 	<div class="col-span-9 grid gap-1">
 		{#if manga.alternative_titles.synonyms.length > 0}
-			<div class="border-2 border-black p-1">
+			<div class="border-2 border-black p-1 bg-gradient-to-l from-red-100 to-white">
 				<div class="grid">
 					<div class="text-xs text-neutral-400">Synonyms</div>
 					<div>{manga.alternative_titles.synonyms.join(', ')}</div>
@@ -44,7 +44,7 @@
 			</div>
 		{/if}
 		{#if manga.alternative_titles.english !== ''}
-			<div class="border-2 border-black p-1">
+			<div class="border-2 border-black p-1 bg-gradient-to-l from-blue-100 to-white">
 				<div class="grid">
 					<div class="text-xs text-neutral-400">English</div>
 					<div>{manga.alternative_titles.english}</div>
@@ -52,7 +52,7 @@
 			</div>
 		{/if}
 		{#if manga.alternative_titles.japanese !== ''}
-			<div class="border-2 border-black p-1">
+			<div class="border-2 border-black p-1 bg-gradient-to-l from-green-100 to-white">
 				<div class="grid">
 					<div class="text-xs text-neutral-400">Japanese</div>
 					<div>{manga.alternative_titles.japanese}</div>
@@ -60,7 +60,9 @@
 			</div>
 		{/if}
 		{#if manga.alternative_titles.synonyms.length === 0 && manga.alternative_titles.english === '' && manga.alternative_titles.japanese === ''}
-			<div class="border-2 border-black p-1 flex items-center justify-center h-full">
+			<div
+				class="border-2 border-black p-1 flex items-center justify-center h-full bg-gradient-to-l from-neutral-100 to-white"
+			>
 				<div class="text-xs text-neutral-400">No alternative titles</div>
 			</div>
 		{/if}
@@ -71,7 +73,7 @@
 			<button
 				on:click={() => changeTab(i)}
 				class="border-2 border-black {tabs[i].active &&
-					'bg-black text-white'} hover:text-black hover:bg-neutral-200 text-xs p-1"
+					'bg-red-500 text-white'} hover:text-black hover:bg-red-200 text-xs p-1"
 				>{tab.label}</button
 			>
 		{/each}
@@ -79,7 +81,9 @@
 
 	{#each tabs as tab}
 		{#if tab.active}
-			<div class="col-span-12 border-2 border-black p-1 whitespace-pre-wrap">
+			<div
+				class="col-span-12 border-2 border-black p-1 whitespace-pre-wrap bg-gradient-to-t from-red-100 to-white"
+			>
 				{tab.content}
 			</div>
 		{/if}

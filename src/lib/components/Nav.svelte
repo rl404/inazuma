@@ -12,7 +12,7 @@
 	<div class="relative w-lg h-full mx-auto">
 		<div class="absolute bottom-10 left-full ml-4 grid gap-2 w-8">
 			<a href="/" class="hover:opacity-70 rounded-full border border-black bg-white" title="home">
-				<Image src="/favicon.png" alt="logo" class="rounded-full grayscale" />
+				<Image src="/favicon.png" alt="logo" class="rounded-full" />
 			</a>
 			<a
 				href="/manga"
