@@ -4,6 +4,7 @@
 	import CountGenre from './CountGenre.svelte';
 	import CountMagazine from './CountMagazine.svelte';
 	import CountManga from './CountManga.svelte';
+	import TopRank from './TopRank.svelte';
 </script>
 
 <div class="p-5 grid grid-cols-12 gap-1">
@@ -19,5 +20,8 @@
 	</RenderIfVisible>
 	<RenderIfVisible class="col-span-3 border-2 border-black p-1 aspect-video">
 		<CountGenre />
+	</RenderIfVisible>
+	<RenderIfVisible class="col-span-12">
+		<TopRank />
 	</RenderIfVisible>
 </div>

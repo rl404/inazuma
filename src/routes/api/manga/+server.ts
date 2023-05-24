@@ -9,7 +9,17 @@ export type mangasResponse = {
 };
 
 export const GET = (async ({ url }) => {
-	const queries = ['mode', 'title', 'type', 'start_date', 'end_date', 'sort', 'page', 'limit']
+	const queries = [
+		'mode',
+		'title',
+		'type',
+		'start_date',
+		'end_date',
+		'nsfw',
+		'sort',
+		'page',
+		'limit'
+	]
 		.map((q) => `${q}=${url.searchParams.get(q) ?? ''}`)
 		.join('&');
 

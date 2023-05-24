@@ -21,7 +21,6 @@
 	let hasMore: boolean = true;
 	let loading: boolean = false;
 	let error: string = '';
-	let listArea: HTMLElement;
 
 	$: data = [...data, ...newData];
 
@@ -79,7 +78,7 @@
 					</IconButton>
 				</div>
 			</div>
-			<div class="col-span-12 grid grid-cols-5 gap-1" bind:this={listArea}>
+			<div class="col-span-12 grid grid-cols-5 gap-1">
 				{#each data as manga}
 					<MangaGrid data={manga} class="border-2 border-black" />
 				{/each}
