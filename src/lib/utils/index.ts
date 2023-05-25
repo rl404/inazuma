@@ -35,3 +35,13 @@ export const getAxiosError = (error: Error | AxiosError): string => {
 	}
 	return error.response.data.message;
 };
+
+export const groupArr = (data: any[], n: number): any[] => {
+	var group: any[] = [];
+	for (var i = 0, j = 0; i < data.length; i++) {
+		if (i >= n && i % n === 0) j++;
+		group[j] = group[j] || [];
+		group[j].push(data[i]);
+	}
+	return group;
+};
