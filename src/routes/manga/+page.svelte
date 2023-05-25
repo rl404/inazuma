@@ -91,17 +91,17 @@
 <div class="grid gap-5">
 	<PortraitPage>
 		<div class="p-5 grid grid-cols-12 gap-1">
-			<div class="col-span-12 text-xs">0. Manga List</div>
+			<div class="col-span-12 text-xs md:text-sm lg:text-base">0. Manga List</div>
 			<div class="col-span-12 flex gap-1">
 				<InputText
 					placeholder="anime title..."
 					bind:value={title}
 					on:enter={onSearch}
-					class="grow"
+					class="grow md:text-lg lg:text-xl"
 				/>
 				<div class="flex items-center gap-1">
 					<IconButton title="search" on:click={onSearch}>
-						<SearchIcon class="w-4 h-4" />
+						<SearchIcon class="w-4 h-4 md:w-5 md:h-5" />
 					</IconButton>
 				</div>
 			</div>

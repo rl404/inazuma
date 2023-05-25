@@ -13,7 +13,7 @@
 	<div
 		class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 grid text-center shadow-white dark:shadow-black"
 	>
-		<div class="text-3xl font-bold text-shadow-sm">INAZUMA</div>
+		<div class="text-3xl md:text-4xl lg:text-5xl font-bold text-shadow-sm">INAZUMA</div>
 		<Border />
 		<div class="text-shadow-sm">Manga data in manga style</div>
 	</div>
