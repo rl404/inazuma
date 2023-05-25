@@ -9,8 +9,8 @@
 </script>
 
 <div class="fixed w-full h-full top-0">
-	<div class="relative w-lg h-full mx-auto">
-		<div class="absolute bottom-10 left-full ml-4 grid gap-2 w-8">
+	<div class="relative w-lg md:w-xl lg:w-2xl h-full mx-auto">
+		<div class="absolute bottom-10 left-full ml-4 grid gap-2 w-8 md:w-10">
 			<a
 				href="/"
 				class="hover:opacity-70 rounded-full border border-black dark:border-neutral-600 bg-white dark:bg-black"

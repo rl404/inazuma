@@ -21,8 +21,11 @@
 
 <div class="grid grid-cols-5 gap-1">
 	<div class="col-span-5 flex items-center justify-between">
-		<div>Top One-Shot</div>
-		<a href="/manga?type=ONE_SHOT&sort=-mean" class="text-xs text-neutral-400">more</a>
+		<div class="md:text-lg lg:text-xl">Top One-Shot</div>
+		<a
+			href="/manga?type=ONE_SHOT&sort=-mean"
+			class="text-xs md:text-sm lg:text-base text-neutral-400">more</a
+		>
 	</div>
 	{#if loading}
 		<div class="col-span-5">

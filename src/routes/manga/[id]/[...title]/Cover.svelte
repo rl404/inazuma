@@ -6,54 +6,58 @@
 	export let manga: mangaResponseData;
 </script>
 
-<Image
-	src={manga.picture}
-	alt={manga.title}
-	class="absolute w-full h-full object-cover -z-10 {manga.nsfw && 'blur'}"
-/>
+<div class="group">
+	<Image
+		src={manga.picture}
+		alt={manga.title}
+		class="absolute w-full h-full object-cover -z-10 {manga.nsfw && 'blur'} group-hover:blur-0"
+	/>
 
-<div class="absolute bottom-0 right-0 w-1/2 p-5 text-right">
-	<a
-		href={`${PUBLIC_MAL_HOST}/manga/${manga.id}`}
-		target="_blank"
-		rel="noreferral"
-		class="font-bold text-xl text-shadow-sm shadow-white dark:shadow-black"
-	>
-		{manga.title}
-	</a>
-</div>
-
-<div class="absolute bottom-0 left-0 w-1/2 p-5 grid">
-	{#each manga.authors as author}
+	<div class="absolute bottom-0 right-0 w-1/2 p-5 text-right">
 		<a
-			href={`/manga?author_id=${author.id}`}
+			href={`${PUBLIC_MAL_HOST}/manga/${manga.id}`}
 			target="_blank"
 			rel="noreferral"
-			class="font-bold text-shadow-sm shadow-white dark:shadow-black"
-			title={author.role}
+			class="font-bold text-xl md:text-2xl lg:text-3xl text-shadow-sm shadow-white dark:shadow-black"
 		>
-			{author.name}
+			{manga.title}
 		</a>
-	{/each}
-</div>
-
-<div class="absolute w-1/2 p-5 grid">
-	{#each manga.serialization as magazine}
-		<a
-			href={`/manga?magazine_id=${magazine.id}`}
-			target="_blank"
-			rel="noreferral"
-			class="font-bold text-shadow-sm shadow-white dark:shadow-black"
-		>
-			{magazine.name}
-		</a>
-	{/each}
-</div>
-
-{#if manga.nsfw}
-	<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45">
-		<div class="bg-white dark:text-black text-3xl px-4 py-1 border-2 border-black font-bold">
-			NSFW
-		</div>
 	</div>
-{/if}
+
+	<div class="absolute bottom-0 left-0 w-1/2 p-5 grid">
+		{#each manga.authors as author}
+			<a
+				href={`/manga?author_id=${author.id}`}
+				target="_blank"
+				rel="noreferral"
+				class="font-bold md:text-lg lg:text-xl text-shadow-sm shadow-white dark:shadow-black"
+				title={author.role}
+			>
+				{author.name}
+			</a>
+		{/each}
+	</div>
+
+	<div class="absolute w-1/2 p-5 grid">
+		{#each manga.serialization as magazine}
+			<a
+				href={`/manga?magazine_id=${magazine.id}`}
+				target="_blank"
+				rel="noreferral"
+				class="font-bold md:text-lg lg:text-xl text-shadow-sm shadow-white dark:shadow-black"
+			>
+				{magazine.name}
+			</a>
+		{/each}
+	</div>
+
+	{#if manga.nsfw}
+		<div
+			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 group-hover:hidden"
+		>
+			<div class="bg-white dark:text-black text-3xl px-4 py-1 border-2 border-black font-bold">
+				NSFW
+			</div>
+		</div>
+	{/if}
+</div>
