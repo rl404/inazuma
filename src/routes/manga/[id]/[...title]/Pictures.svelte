@@ -28,15 +28,17 @@
 	};
 </script>
 
-<div class="relative overflow-hidden {className}">
+<div class="relative overflow-hidden group {className}">
 	<Image
 		src={pictures[i]}
 		alt={manga.title}
-		class="w-full h-full object-cover {manga.nsfw && 'blur'}"
+		class="w-full h-full object-cover {manga.nsfw && 'blur'} group-hover:blur-0"
 	/>
 
 	{#if manga.nsfw}
-		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45">
+		<div
+			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 group-hover:hidden"
+		>
 			<div class="bg-white dark:text-black px-4 py-1 border-2 border-black font-bold">NSFW</div>
 		</div>
 	{/if}
