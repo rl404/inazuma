@@ -17,7 +17,7 @@
 			class="w-full h-full object-cover hover:opacity-70"
 		/>
 		<div
-			class="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-2xs text-center bg-white dark:bg-black line-clamp-1 p-0.5 border-t border-black group-hover:text-black dark:group-hover:text-white"
+			class="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-2xs md:text-xs lg:text-sm text-center bg-white dark:bg-black line-clamp-1 p-0.5 border-t border-black group-hover:text-black dark:group-hover:text-white"
 		>
 			{data.title}
 		</div>

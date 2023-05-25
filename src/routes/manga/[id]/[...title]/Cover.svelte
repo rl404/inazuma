@@ -17,7 +17,7 @@
 		href={`${PUBLIC_MAL_HOST}/manga/${manga.id}`}
 		target="_blank"
 		rel="noreferral"
-		class="font-bold text-xl text-shadow-sm shadow-white dark:shadow-black"
+		class="font-bold text-xl md:text-2xl lg:text-3xl text-shadow-sm shadow-white dark:shadow-black"
 	>
 		{manga.title}
 	</a>
@@ -29,7 +29,7 @@
 			href={`/manga?author_id=${author.id}`}
 			target="_blank"
 			rel="noreferral"
-			class="font-bold text-shadow-sm shadow-white dark:shadow-black"
+			class="font-bold md:text-lg lg:text-xl text-shadow-sm shadow-white dark:shadow-black"
 			title={author.role}
 		>
 			{author.name}
@@ -43,7 +43,7 @@
 			href={`/manga?magazine_id=${magazine.id}`}
 			target="_blank"
 			rel="noreferral"
-			class="font-bold text-shadow-sm shadow-white dark:shadow-black"
+			class="font-bold md:text-lg lg:text-xl text-shadow-sm shadow-white dark:shadow-black"
 		>
 			{magazine.name}
 		</a>

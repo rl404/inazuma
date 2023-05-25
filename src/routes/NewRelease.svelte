@@ -23,9 +23,10 @@
 
 <div class="grid grid-cols-5 gap-1">
 	<div class="col-span-5 flex items-center justify-between">
-		<div>New Release</div>
-		<a href="/manga?end_date={today}&nsfw=false&sort=-start_date" class="text-xs text-neutral-400"
-			>more</a
+		<div class="md:text-lg lg:text-xl">New Release</div>
+		<a
+			href="/manga?end_date={today}&nsfw=false&sort=-start_date"
+			class="text-xs md:text-sm lg:text-base text-neutral-400">more</a
 		>
 	</div>
 	{#if loading}

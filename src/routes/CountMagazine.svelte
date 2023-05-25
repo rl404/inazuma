@@ -31,8 +31,8 @@
 		</div>
 	{:else}
 		<div class="grid gap-1 text-center">
-			<div class="text-xs text-neutral-400">Magazine</div>
-			<div class="text-lg font-bold">{data.toLocaleString()}</div>
+			<div class="text-xs md:text-sm lg:text-base text-neutral-400">Magazine</div>
+			<div class="text-lg md:text-xl lg:text-2xl font-bold">{data.toLocaleString()}</div>
 		</div>
 	{/if}
 </a>

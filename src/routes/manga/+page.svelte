@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAxiosError } from '$lib/utils';
+	import { getAxiosError, groupArr } from '$lib/utils';
 	import MangaGrid from '$lib/components/layouts/MangaGrid.svelte';
 	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
 	import InfiniteScroll from '$lib/components/InfiniteScroll.svelte';
@@ -15,6 +15,7 @@
 
 	let data: mangaResponseData[] = [];
 	let newData: mangaResponseData[] = [];
+	let newPageData: mangaResponseData[][] = [];
 	let title: string = '';
 	let type: string = '';
 	let startDate: string = '';
@@ -22,12 +23,13 @@
 	let nsfw: string = '';
 	let sort: string = '-mean';
 	let page: number = 1;
-	let limit: number = 30;
+	let limit: number = 25;
 	let hasMore: boolean = true;
 	let loading: boolean = false;
 	let error: string = '';
 
 	$: data = [...data, ...newData];
+	$: newPageData = groupArr(data, 25);
 
 	onMount(() => {
 		const params = $appPage.url.searchParams;
@@ -91,38 +93,48 @@
 <div class="grid gap-5">
 	<PortraitPage>
 		<div class="p-5 grid grid-cols-12 gap-1">
-			<div class="col-span-12 text-xs">0. Manga List</div>
+			<div class="col-span-12 text-xs md:text-sm lg:text-base">0. Manga List</div>
 			<div class="col-span-12 flex gap-1">
 				<InputText
 					placeholder="anime title..."
 					bind:value={title}
 					on:enter={onSearch}
-					class="grow"
+					class="grow md:text-lg lg:text-xl"
 				/>
 				<div class="flex items-center gap-1">
 					<IconButton title="search" on:click={onSearch}>
-						<SearchIcon class="w-4 h-4" />
+						<SearchIcon class="w-4 h-4 md:w-5 md:h-5" />
 					</IconButton>
 				</div>
 			</div>
 			<div class="col-span-12 grid grid-cols-5 gap-1">
-				{#each data as manga}
+				{#each data.slice(0, 25) as manga}
 					<MangaGrid data={manga} class="border-2 border-black" />
 				{/each}
 
 				{#if !loading && data.length === 0 && error === ''}
 					<div class="col-span-5 text-center">no results</div>
 				{/if}
-				{#if error !== ''}
-					<div class="col-span-5 text-center text-red-500">{error}</div>
-				{/if}
-				{#if loading}
-					<div class="col-span-5">
-						<SpinnerIcon class="w-5 h-5 animate-spin text-neutral-200 fill-black mx-auto" />
-					</div>
-				{/if}
-				<InfiniteScroll {hasMore} threshold={100} on:loadMore={loadMore} />
 			</div>
 		</div>
 	</PortraitPage>
+
+	{#each newPageData.slice(1) as newPage}
+		<PortraitPage>
+			<div class="p-5 grid grid-cols-5 gap-1">
+				{#each newPage as manga}
+					<MangaGrid data={manga} class="border-2 border-black" />
+				{/each}
+			</div>
+		</PortraitPage>
+	{/each}
+
+	{#if error !== ''}
+		<div class="text-center text-red-500">asd{error}</div>
+	{/if}
+	{#if loading}
+		<SpinnerIcon class="w-5 h-5 animate-spin text-neutral-200 fill-black mx-auto" />
+	{/if}
+
+	<InfiniteScroll {hasMore} threshold={100} window={true} on:loadMore={loadMore} />
 </div>
