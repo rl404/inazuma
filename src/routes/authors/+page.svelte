@@ -1,29 +1,23 @@
 <script lang="ts">
-	import { getAxiosError, groupArr } from '$lib/utils';
-	import MangaGrid from '$lib/components/layouts/MangaGrid.svelte';
-	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
-	import InfiniteScroll from '$lib/components/InfiniteScroll.svelte';
+	import { page as appPage } from '$app/stores';
 	import Head from '$lib/components/Head.svelte';
-	import IconButton from '$lib/components/buttons/IconButton.svelte';
-	import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
 	import InputText from '$lib/components/inputs/InputText.svelte';
 	import PortraitPage from '$lib/components/pages/PortraitPage.svelte';
-	import { onMount } from 'svelte';
+	import { getAxiosError, groupArr } from '$lib/utils';
+	import type { authorResponseData } from '../api/authors/+server';
 	import axios from 'axios';
-	import { page as appPage } from '$app/stores';
-	import type { mangaResponseData } from '../api/manga/[id]/+server';
+	import IconButton from '$lib/components/buttons/IconButton.svelte';
+	import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
+	import { onMount } from 'svelte';
+	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
+	import InfiniteScroll from '$lib/components/InfiniteScroll.svelte';
 
-	let data: mangaResponseData[] = [];
-	let newData: mangaResponseData[] = [];
-	let newPageData: mangaResponseData[][] = [];
-	let title: string = '';
-	let type: string = '';
-	let startDate: string = '';
-	let endDate: string = '';
-	let nsfw: string = '';
-	let sort: string = '-mean';
+	let data: authorResponseData[] = [];
+	let newData: authorResponseData[] = [];
+	let newPageData: authorResponseData[][] = [];
+	let name: string = '';
 	let page: number = 1;
-	let limit: number = 25;
+	let limit: number = 55;
 	let total: number = 0;
 	let hasMore: boolean = true;
 	let loading: boolean = false;
@@ -34,14 +28,7 @@
 
 	onMount(() => {
 		const params = $appPage.url.searchParams;
-
-		title = params.get('title') || '';
-		type = params.get('type') || '';
-		startDate = params.get('start_date') || '';
-		endDate = params.get('end_date') || '';
-		nsfw = params.get('nsfw') || '';
-		sort = params.get('sort') || '-mean';
-
+		name = params.get('name') || '';
 		fetchData();
 	});
 
@@ -50,12 +37,7 @@
 		error = '';
 
 		const queries = Object.entries({
-			title: title,
-			type: type,
-			start_date: startDate,
-			end_date: endDate,
-			nsfw: nsfw,
-			sort: sort,
+			name: name,
 			page: page,
 			limit: limit
 		})
@@ -63,7 +45,7 @@
 			.join('&');
 
 		axios
-			.get(`/api/manga?${queries}`)
+			.get(`/api/authors?${queries}`)
 			.then((resp) => {
 				newData = resp.data.data;
 				total = resp.data.meta.total;
@@ -91,21 +73,21 @@
 	};
 </script>
 
-<Head title="Manga List" />
+<Head title="Author List" />
 
 <div class="grid gap-5">
 	<PortraitPage>
 		<div class="p-5 grid grid-cols-12 gap-1">
 			<div class="col-span-12 text-xs md:text-sm lg:text-base">
-				0. Manga List ({total.toLocaleString()})
+				0. Author List ({total.toLocaleString()})
 			</div>
 			<div class="col-span-12 flex gap-1">
 				<InputText
-					placeholder="anime title..."
-					bind:value={title}
+					placeholder="author name..."
+					bind:value={name}
 					on:enter={onSearch}
 					class="grow md:text-lg lg:text-xl"
-					inputClass="bg-gradient-to-r from-white to-red-200 dark:from-neutral-800 dark:to-red-900"
+					inputClass="bg-gradient-to-r from-white to-blue-200 dark:from-neutral-800 dark:to-blue-900"
 				/>
 				<div class="flex items-center gap-1">
 					<IconButton title="search" on:click={onSearch}>
@@ -114,8 +96,17 @@
 				</div>
 			</div>
 			<div class="col-span-12 grid grid-cols-5 gap-1">
-				{#each data.slice(0, limit) as manga}
-					<MangaGrid data={manga} class="border-2 border-black" />
+				{#each data.slice(0, limit) as author}
+					<a
+						class="border-2 border-black p-1 aspect-video flex items-center justify-center bg-gradient-to-r from-white to-blue-50 dark:from-neutral-800 dark:to-blue-950"
+						href="/manga?author_id={author.id}"
+						title="{author.first_name} {author.last_name}"
+					>
+						<div class="text-center line-clamp-2 md:text-lg lg:text-xl">
+							{author.first_name}
+							{author.last_name}
+						</div>
+					</a>
 				{/each}
 
 				{#if !loading && data.length === 0 && error === ''}
@@ -128,8 +119,17 @@
 	{#each newPageData.slice(1) as newPage}
 		<PortraitPage>
 			<div class="p-5 grid grid-cols-5 gap-1">
-				{#each newPage as manga}
-					<MangaGrid data={manga} class="border-2 border-black" />
+				{#each newPage as author}
+					<a
+						class="border-2 border-black p-1 aspect-video flex items-center justify-center bg-gradient-to-r from-white to-blue-50 dark:from-neutral-800 dark:to-blue-950"
+						href="/manga?author_id={author.id}"
+						title="{author.first_name} {author.last_name}"
+					>
+						<div class="text-center line-clamp-2 md:text-lg lg:text-xl">
+							{author.first_name}
+							{author.last_name}
+						</div>
+					</a>
 				{/each}
 			</div>
 		</PortraitPage>
