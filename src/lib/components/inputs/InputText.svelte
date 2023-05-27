@@ -6,6 +6,7 @@
 	export let placeholder: string = '';
 	export { className as class };
 	let className: string = '';
+	export let inputClass: string = '';
 
 	const dispatch = createEventDispatcher<{ enter: never }>();
 
@@ -33,7 +34,7 @@
 	<input
 		{placeholder}
 		type="text"
-		class="w-full pl-1 pr-9 bg-gradient-to-r from-white to-red-200 dark:from-neutral-800 dark:to-red-900 border-2 border-black focus:outline-none"
+		class="{inputClass} w-full pl-1 pr-9 border-2 border-black focus:outline-none"
 		bind:value
 		on:keypress={onEnter}
 	/>
