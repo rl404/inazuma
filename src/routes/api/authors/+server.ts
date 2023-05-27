@@ -1,13 +1,13 @@
 import type { RequestHandler } from './$types';
 import { HIBIKI_HOST } from '$env/static/private';
 
-export type authorsResponse = {
+type authorsResponse = {
 	status: number;
 	message: string;
 	data: authorResponseData;
 };
 
-type authorResponseData = {
+export type authorResponseData = {
 	id: number;
 	first_name: string;
 	last_name: string;
