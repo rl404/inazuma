@@ -1,16 +1,11 @@
 import type { RequestHandler } from './$types';
 import { HIBIKI_HOST } from '$env/static/private';
+import type { authorResponseData } from './[id]/+server';
 
 type authorsResponse = {
 	status: number;
 	message: string;
 	data: authorResponseData;
-};
-
-export type authorResponseData = {
-	id: number;
-	first_name: string;
-	last_name: string;
 };
 
 export const GET = (async ({ url }) => {
