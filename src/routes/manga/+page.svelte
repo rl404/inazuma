@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { getAxiosError, groupArr } from '$lib/utils';
+	import { getAxiosError, groupArr, toDate } from '$lib/utils';
 	import MangaGrid from '$lib/components/layouts/MangaGrid.svelte';
 	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
 	import InfiniteScroll from '$lib/components/InfiniteScroll.svelte';
@@ -12,14 +12,20 @@
 	import axios from 'axios';
 	import { page as appPage } from '$app/stores';
 	import type { mangaResponseData } from '../api/manga/[id]/+server';
+	import SortButton from './SortButton.svelte';
+	import FilterButton from './FilterButton.svelte';
 
 	let data: mangaResponseData[] = [];
 	let newData: mangaResponseData[] = [];
 	let newPageData: mangaResponseData[][] = [];
 	let title: string = '';
 	let type: string = '';
-	let startDate: string = '';
-	let endDate: string = '';
+	let status: string = '';
+	let startDate: Date | null;
+	let endDate: Date | null;
+	let authorID: string = '';
+	let magazineID: string = '';
+	let genreID: string = '';
 	let nsfw: string = '';
 	let sort: string = '-mean';
 	let page: number = 1;
@@ -37,8 +43,12 @@
 
 		title = params.get('title') || '';
 		type = params.get('type') || '';
-		startDate = params.get('start_date') || '';
-		endDate = params.get('end_date') || '';
+		status = params.get('status') || '';
+		startDate = toDate(params.get('start_date'));
+		endDate = toDate(params.get('end_date'));
+		authorID = params.get('author_id') || '';
+		magazineID = params.get('magazine_id') || '';
+		genreID = params.get('genre_id') || '';
 		nsfw = params.get('nsfw') || '';
 		sort = params.get('sort') || '-mean';
 
@@ -52,8 +62,12 @@
 		const queries = Object.entries({
 			title: title,
 			type: type,
-			start_date: startDate,
-			end_date: endDate,
+			status: status,
+			start_date: !startDate ? '' : startDate.toISOString().slice(0, 10),
+			end_date: !endDate ? '' : endDate.toISOString().slice(0, 10),
+			author_id: authorID,
+			magazine_id: magazineID,
+			genre_id: genreID,
 			nsfw: nsfw,
 			sort: sort,
 			page: page,
@@ -111,6 +125,17 @@
 					<IconButton title="search" on:click={onSearch}>
 						<SearchIcon class="w-4 h-4 md:w-5 md:h-5" />
 					</IconButton>
+					<SortButton bind:value={sort} on:sort={onSearch} />
+					<FilterButton
+						bind:type
+						bind:status
+						bind:startDate
+						bind:endDate
+						bind:authorID
+						bind:magazineID
+						bind:genreID
+						on:submit={onSearch}
+					/>
 				</div>
 			</div>
 			<div class="col-span-12 grid grid-cols-5 gap-1">

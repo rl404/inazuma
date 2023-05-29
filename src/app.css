@@ -6,6 +6,11 @@
 	a:hover {
 		@apply text-neutral-500 dark:text-neutral-300;
 	}
+
+	.dark {
+		--date-picker-background: black;
+		--date-picker-foreground: white;
+	  }
 }
 
 @font-face {

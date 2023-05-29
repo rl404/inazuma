@@ -1,19 +1,19 @@
 import type { RequestHandler } from './$types';
 import { HIBIKI_HOST } from '$env/static/private';
-import type { magazineResponseData } from './[id]/+server';
 
-type magazinesResponse = {
+type magazineResponse = {
 	status: number;
 	message: string;
 	data: magazineResponseData;
 };
 
-export const GET = (async ({ url }) => {
-	const queries = ['name', 'page', 'limit']
-		.map((q) => `${q}=${url.searchParams.get(q) ?? ''}`)
-		.join('&');
+export type magazineResponseData = {
+	id: number;
+	name: string;
+};
 
-	const resp = await fetch(`${HIBIKI_HOST}/magazines?${queries}`);
+export const GET = (async ({ params }) => {
+	const resp = await fetch(`${HIBIKI_HOST}/magazines/${params.id}`);
 	const data = await resp.json();
 	return new Response(JSON.stringify(data), {
 		headers: {

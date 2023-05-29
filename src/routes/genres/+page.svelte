@@ -4,13 +4,13 @@
 	import InputText from '$lib/components/inputs/InputText.svelte';
 	import PortraitPage from '$lib/components/pages/PortraitPage.svelte';
 	import { getAxiosError, groupArr } from '$lib/utils';
-	import type { genreResponseData } from '../api/genres/+server';
 	import axios from 'axios';
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import SearchIcon from '$lib/components/icons/SearchIcon.svelte';
 	import { onMount } from 'svelte';
 	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
 	import InfiniteScroll from '$lib/components/InfiniteScroll.svelte';
+	import type { genreResponseData } from '../api/genres/[id]/+server';
 
 	let data: genreResponseData[] = [];
 	let newData: genreResponseData[] = [];
