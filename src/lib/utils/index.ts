@@ -45,3 +45,29 @@ export const groupArr = (data: any[], n: number): any[] => {
 	}
 	return group;
 };
+
+export const clickAway = (el: any): any => {
+	const handleClick = (e: MouseEvent) => {
+		if (el && !el.contains(e.target) && !e.defaultPrevented) {
+			el.dispatchEvent(new CustomEvent('clickAway', el));
+		}
+	};
+
+	document.addEventListener('click', handleClick, true);
+
+	return {
+		destroy() {
+			document.removeEventListener('click', handleClick, true);
+		}
+	};
+};
+
+export const toDate = (str: string | null): Date | null => {
+	if (str === null) return null;
+	if (isNaN(new Date(str).getTime())) return null;
+	return new Date(str);
+};
+
+export const formatAuthor = (first: string, last: string): string => {
+	return first === '' ? last : last === '' ? first : first + ' ' + last;
+};
