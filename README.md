@@ -10,23 +10,29 @@ _Inazuma_ is a simple website to view manga data from [MyAnimeList](https://myan
 ## Installation
 
 1. Clone the repo.
+
 ```sh
 git clone https://github.com/rl404/inazuma
 ```
+
 2. Rename `.env.sample` to `.env` and modify the value according to your setup.
 3. Install depedencies.
+
 ```sh
 npm ci
 ```
+
 4. Start.
+
 ```sh
 npm run dev
 ```
+
 5. [http://localhost:5173](http://localhost:5173) is ready.
 
 ## Trivia
 
-[Inazuma](https://en.wikipedia.org/wiki/Japanese_destroyer_Inazuma_(1932))'s name is taken from one of japanese destroyer. Also, [exists](https://en.kancollewiki.net/Inazuma) in Kantai Collection games and manga.
+[Inazuma](<https://en.wikipedia.org/wiki/Japanese_destroyer_Inazuma_(1932)>)'s name is taken from one of japanese destroyer. Also, [exists](https://en.kancollewiki.net/Inazuma) in Kantai Collection games and manga.
 
 ## Disclaimer
 

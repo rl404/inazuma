@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ChevronUpIcon from './icons/ChevronUpIcon.svelte';
+	import ChevronUpIcon from '$lib/components/icons/ChevronUpIcon.svelte';
 
 	export let offset: number = 150;
 	let hidden: boolean = true;
@@ -28,12 +28,12 @@
 
 <svelte:window on:scroll={onScroll} />
 
-<div class="fixed right-0 bottom-0 p-5" title="scroll to top" class:hidden>
+<div class="fixed bottom-0 right-0 p-4" title="scroll to top" class:hidden>
 	<button
 		type="button"
-		class="bg-white dark:bg-black border border-black hover:opacity-70 p-3 rounded-full"
+		class="rounded-full border border-black bg-white p-3 hover:opacity-70"
 		on:click={onClick}
 	>
-		<ChevronUpIcon class="w-4 h-4" />
+		<ChevronUpIcon class="size-4" />
 	</button>
 </div>

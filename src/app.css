@@ -3,21 +3,28 @@
 @tailwind utilities;
 
 @layer base {
-	a:hover {
-		@apply text-neutral-500 dark:text-neutral-300;
+	@font-face {
+		font-family: 'WildWords';
+		src: url('/fonts/CC Wild Words Roman.ttf');
 	}
 
-	.dark {
-		--date-picker-background: black;
-		--date-picker-foreground: white;
-	  }
+	body {
+		@apply bg-neutral-700 font-manga text-black;
+	}
+
+	a {
+		@apply transition-opacity hover:opacity-70;
+	}
 }
 
-@font-face {
-	font-family: 'WildWords';
-	src: url('/fonts/CC Wild Words Roman.ttf');
+@layer components {
+	.subtitle {
+		@apply text-neutral-400;
+	}
 }
 
-body {
-	font-family: 'WildWords';
+@layer utilities {
+	.more-button {
+		@apply border-2 border-black px-2 text-xs transition-colors hover:bg-neutral-200 lg:text-sm;
+	}
 }

@@ -1,14 +1,13 @@
-/** @type {import('tailwindcss').Config} */
-
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const plugin = require('tailwindcss/plugin');
 
+/** @type {import('tailwindcss').Config} */
 export default {
-	darkMode: 'class',
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		extend: {
-			fontSize: {
-				'2xs': ['0.5rem', { lineHeight: '0.75rem' }]
+			margin: {
+				15: '3.75rem'
 			},
 			width: {
 				xs: '20rem',
@@ -22,6 +21,12 @@ export default {
 				'5xl': '64rem',
 				'6xl': '72rem',
 				'7xl': '80rem'
+			},
+			fontFamily: {
+				manga: 'WildWords'
+			},
+			aspectRatio: {
+				portrait: '7/10'
 			},
 			textShadow: {
 				sm: '-1px -1px 0 var(--tw-shadow-color), 1px -1px 0 var(--tw-shadow-color), -1px 1px 0 var(--tw-shadow-color), 1px 1px 0 var(--tw-shadow-color)',

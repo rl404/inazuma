@@ -1,6 +1,6 @@
 <script lang="ts">
+	import ImageIcon from '$lib/components/icons/ImageIcon.svelte';
 	import { onMount } from 'svelte';
-	import ImageIcon from './icons/ImageIcon.svelte';
 
 	export let src: string;
 	export let alt: string;
@@ -29,17 +29,17 @@
 
 {#if src === ''}
 	<div
-		class="aspect-square text-center flex items-center justify-center overflow-hidden {className}"
+		class="flex aspect-square items-center justify-center overflow-hidden text-center {className}"
 	>
 		{alt}
 	</div>
 {:else if loading}
-	<div class="animate-pulse aspect-square flex items-center justify-center {className}">
+	<div class="flex aspect-square animate-pulse items-center justify-center {className}">
 		<ImageIcon class="w-1/4 opacity-20" />
 	</div>
 {:else if error}
 	<div
-		class="aspect-square text-center flex items-center justify-center overflow-hidden {className}"
+		class="flex aspect-square items-center justify-center overflow-hidden text-center {className}"
 	>
 		{alt}
 	</div>

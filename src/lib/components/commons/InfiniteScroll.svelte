@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onDestroy, onMount } from 'svelte';
 
-	export let threshold: number | undefined = 0;
+	export let threshold: number | undefined = 100;
 	export let horizontal: boolean | undefined = false;
 	export let elementScroll: HTMLElement | null = null;
 	export let hasMore: boolean | undefined = true;
 	export let reverse: boolean | undefined = false;
-	export let window: boolean | undefined = false;
+	export let window: boolean | undefined = true;
 
-	const dispatch = createEventDispatcher<{ loadMore: never }>();
+	const dispatch = createEventDispatcher<{ loadMore: any }>();
 
 	let isLoadMore: boolean = false;
 	let component: HTMLElement;
@@ -66,6 +66,8 @@
 		} else {
 			element = component.parentNode;
 		}
+
+		hasMore && dispatch('loadMore');
 	});
 
 	onDestroy(() => {
@@ -77,5 +79,5 @@
 </script>
 
 {#if !window && !elementScroll}
-	<div bind:this={component} id="svelte-infinite-scroll" class="w-0" />
+	<div bind:this={component} class="w-0" />
 {/if}
