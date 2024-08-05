@@ -19,14 +19,14 @@
 		<Image
 			src={data.picture}
 			alt={data.title}
-			class={twMerge('h-full w-full object-cover group-hover:blur-0', data.nsfw && nsfw && 'blur')}
+			class={twMerge('h-full w-full object-cover group-hover:blur-0', data.nsfw && !nsfw && 'blur')}
 		/>
 		<div
 			class="absolute bottom-0 line-clamp-1 w-full break-all border-t border-black bg-white p-0.5 text-center text-xs opacity-0 transition-opacity group-hover:opacity-100 lg:text-sm"
 		>
 			{data.title}
 		</div>
-		{#if data.nsfw && nsfw}
+		{#if data.nsfw && !nsfw}
 			<div
 				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
 			>

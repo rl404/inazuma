@@ -14,7 +14,7 @@
 		alt={manga.title}
 		class={twMerge(
 			'h-full w-full border-2 border-black object-cover',
-			manga.nsfw && nsfw && 'blur group-hover:blur-0'
+			manga.nsfw && !nsfw && 'blur group-hover:blur-0'
 		)}
 	/>
 
@@ -52,7 +52,7 @@
 		{/each}
 	</div>
 
-	{#if manga.nsfw && nsfw}
+	{#if manga.nsfw && !nsfw}
 		<div
 			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
 		>

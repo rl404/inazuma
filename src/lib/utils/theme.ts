@@ -2,6 +2,27 @@ import { writable } from 'svelte/store';
 
 export const NSFW = writable<boolean>(false);
 
+const getNSFW = (): boolean => {
+	let nsfw = true;
+	if ('nsfw' in localStorage) {
+		nsfw = localStorage.nsfw === 'true';
+	}
+	return nsfw;
+};
+
+export const setNSFW = (nsfw?: boolean) => {
+	if (nsfw === undefined) {
+		nsfw = getNSFW();
+	}
+	localStorage.nsfw = nsfw;
+	NSFW.set(nsfw);
+};
+
+export const toggleNSFW = () => {
+	const v = getNSFW();
+	setNSFW(!v);
+};
+
 const getGrayscale = (): boolean => {
 	let mode = true;
 	if ('grayscale' in localStorage) {

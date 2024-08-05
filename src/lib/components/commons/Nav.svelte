@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { NSFW, toggleGrayscale } from '$lib/utils/theme';
+	import { NSFW, toggleGrayscale, toggleNSFW } from '$lib/utils/theme';
 	import { twMerge } from 'tailwind-merge';
 	import GithubIcon from '../icons/GithubIcon.svelte';
 	import PaletteIcon from '../icons/PaletteIcon.svelte';
@@ -9,8 +9,6 @@
 	let nsfw: boolean = false;
 
 	NSFW.subscribe((v) => (nsfw = v));
-
-	const toggleNSFW = () => NSFW.set(!nsfw);
 </script>
 
 <div class="fixed bottom-0 left-0 z-10 flex w-full items-center justify-center">
@@ -33,7 +31,7 @@
 				title="toggle grayscale"
 				class={twMerge(
 					'rounded-full border border-black bg-white p-2 font-bold',
-					nsfw && 'line-through'
+					!nsfw && 'line-through'
 				)}
 				on:click={() => toggleNSFW()}
 			>

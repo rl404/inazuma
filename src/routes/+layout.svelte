@@ -1,12 +1,13 @@
 <script>
 	import Nav from '$lib/components/commons/Nav.svelte';
 	import ScrollTop from '$lib/components/commons/ScrollTop.svelte';
-	import { setGrayscale } from '$lib/utils/theme';
+	import { setGrayscale, setNSFW } from '$lib/utils/theme';
 	import { onMount } from 'svelte';
 	import '../app.css';
 
 	onMount(() => {
 		setGrayscale();
+		setNSFW();
 	});
 </script>
 
