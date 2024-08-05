@@ -1,5 +1,5 @@
 <div
-	class="bg-white dark:bg-black aspect-[7/10] w-lg md:w-xl lg:w-2xl mx-auto drop-shadow-lg overflow-y-scroll"
+	class="relative aspect-portrait w-full overflow-y-scroll bg-white p-4 drop-shadow-lg sm:w-lg lg:w-2xl"
 >
 	<slot />
 </div>

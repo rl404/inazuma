@@ -1,44 +1,38 @@
-export enum ThemeMode {
-	Light = 'light',
-	Dark = 'dark'
-}
+import { writable } from 'svelte/store';
 
-export const setTheme = (mode?: ThemeMode) => {
-	if (!mode) {
-		mode = getTheme();
-	}
+export const NSFW = writable<boolean>(false);
 
-	localStorage.theme = mode;
-	if (mode === ThemeMode.Dark) {
-		document.documentElement.classList.add('dark');
-	} else {
-		document.documentElement.classList.remove('dark');
+const getNSFW = (): boolean => {
+	let nsfw = false;
+	if ('nsfw' in localStorage) {
+		nsfw = localStorage.nsfw === 'true';
 	}
+	return nsfw;
 };
 
-const getTheme = (): ThemeMode => {
-	let mode = ThemeMode.Light;
-	if ('theme' in localStorage) {
-		mode = localStorage.theme;
+export const setNSFW = (nsfw?: boolean) => {
+	if (nsfw === undefined) {
+		nsfw = getNSFW();
+	}
+	localStorage.nsfw = nsfw;
+	NSFW.set(nsfw);
+};
+
+export const toggleNSFW = () => {
+	const v = getNSFW();
+	setNSFW(!v);
+};
+
+const getGrayscale = (): boolean => {
+	let mode = true;
+	if ('grayscale' in localStorage) {
+		mode = localStorage.grayscale === 'true';
 	}
 	return mode;
 };
 
-export const toggleGrayscale = () => {
-	let mode = getGrayscale();
-
-	mode = !mode;
-
-	localStorage.grayscale = mode;
-	if (mode) {
-		document.documentElement.classList.add('grayscale');
-	} else {
-		document.documentElement.classList.remove('grayscale');
-	}
-};
-
 export const setGrayscale = (mode?: boolean) => {
-	if (!mode) {
+	if (mode === undefined) {
 		mode = getGrayscale();
 	}
 
@@ -50,10 +44,6 @@ export const setGrayscale = (mode?: boolean) => {
 	}
 };
 
-const getGrayscale = (): boolean => {
-	let mode = true;
-	if ('grayscale' in localStorage) {
-		mode = localStorage.grayscale === 'true';
-	}
-	return mode;
+export const toggleGrayscale = () => {
+	setGrayscale(!getGrayscale());
 };

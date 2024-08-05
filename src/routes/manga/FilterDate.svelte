@@ -5,30 +5,27 @@
 	export let label: string;
 	export let value: Date | null;
 
-	const onReset = () => {
-		value = null;
-	};
+	const onReset = () => (value = null);
 </script>
 
 <div class="grid">
-	<div class="text-neutral-400">{label}</div>
+	<div>{label}</div>
 	<div class="relative">
 		<DateInput
 			bind:value
 			placeholder="date"
 			format="yyyy-MM-dd"
 			closeOnSelection
-			class="[&>input]:!w-full [&>input]:h-[22px] [&>input]:bg-white [&>input]:dark:bg-neutral-600 [&>input]:!border-none focus:[&>input]:!shadow-none [&>.picker]:right-0"
+			class="[&>.picker]:right-0 [&>input]:h-[22px] [&>input]:!w-full [&>input]:!rounded-none [&>input]:!border [&>input]:!border-black [&>input]:bg-white focus:[&>input]:!shadow-none"
 		/>
-
 		{#if value != null}
-			<div
-				class="z-10 absolute inset-y-0 right-0 flex items-center pr-1 hover:text-red-500 cursor-pointer"
+			<button
 				title="clear"
+				class="absolute inset-y-0 right-1 z-10 text-red-500 hover:opacity-70"
 				on:click={onReset}
 			>
-				<XmarkIcon class="w-3 h-3" />
-			</div>
+				<XmarkIcon class="h-3 w-3" />
+			</button>
 		{/if}
 	</div>
 </div>

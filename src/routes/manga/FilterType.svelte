@@ -16,8 +16,8 @@
 </script>
 
 <div class="grid">
-	<div class="text-neutral-400">Type</div>
-	<select bind:value class="p-1 w-full bg-white dark:bg-neutral-600">
+	<div>Type</div>
+	<select bind:value class="w-full border border-black bg-white p-1">
 		<option value="">All</option>
 		{#each types as type}
 			<option value={type}>{mangaTypes(type)}</option>

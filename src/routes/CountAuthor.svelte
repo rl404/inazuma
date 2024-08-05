@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import axios from 'axios';
+	import Loading from '$lib/components/commons/Loading.svelte';
 	import { getAxiosError } from '$lib/utils';
-	import SpinnerIcon from '$lib/components/icons/SpinnerIcon.svelte';
+	import axios from 'axios';
+	import { onMount } from 'svelte';
 
 	let data: number = 0;
 	let loading: boolean = true;
@@ -10,29 +10,28 @@
 
 	onMount(() => {
 		axios
-			.get(`/api/authors?limit=1`)
+			.get(`/api/authors?limit=0`)
 			.then((resp) => (data = resp.data.meta.total))
 			.catch((err) => (error = getAxiosError(err)))
 			.finally(() => (loading = false));
 	});
 </script>
 
-<a
-	class="relative block w-full h-full bg-gradient-to-t from-blue-200 to-white dark:from-blue-900 dark:to-black"
-	href="/authors"
->
+<a href="/authors" class="block h-full w-full bg-gradient-to-t from-blue-200 to-white">
 	{#if loading}
-		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-			<SpinnerIcon class="w-4 h-4 animate-spin text-neutral-200 fill-black " />
+		<div class="flex h-full w-full items-center justify-center">
+			<Loading class="size-4" />
 		</div>
 	{:else if error !== ''}
-		<div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-red-500 text-xs">
+		<div class="flex h-full w-full items-center justify-center text-xs text-red-500">
 			{error}
 		</div>
 	{:else}
-		<div class="grid gap-1 text-center">
-			<div class="text-xs md:text-sm lg:text-base text-neutral-400">Author</div>
-			<div class="text-lg md:text-xl lg:text-2xl font-bold">{data.toLocaleString()}</div>
+		<div class="flex h-full w-full items-center justify-center text-center">
+			<div class="grid">
+				<div class="subtitle text-xs lg:text-base">Author</div>
+				<div class="text-lg font-bold lg:text-2xl">{data.toLocaleString()}</div>
+			</div>
 		</div>
 	{/if}
 </a>

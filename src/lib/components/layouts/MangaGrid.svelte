@@ -1,35 +1,37 @@
 <script lang="ts">
-	import type { mangaResponseData } from '../../../routes/api/manga/[id]/+server';
-	import Image from '../Image.svelte';
-	import RenderIfVisible from '../RenderIfVisible.svelte';
+	import Image from '$lib/components/commons/Image.svelte';
+	import RenderIfVisible from '$lib/components/commons/RenderIfVisible.svelte';
+	import { NSFW } from '$lib/utils/theme';
+	import { twMerge } from 'tailwind-merge';
+	import type { MangaResponseData } from '../../../routes/api/manga/[id]/+server';
+
+	export let data: MangaResponseData;
 
 	export { className as class };
 	let className: string = '';
+	let nsfw: boolean = false;
 
-	export let data: mangaResponseData;
+	NSFW.subscribe((v) => (nsfw = v));
 </script>
 
-<RenderIfVisible class="{className} relative group" style="aspect-ratio: 7/10;" title={data.title}>
-	<a href="/manga/{data.id}/{data.title}" data-sveltekit-reload>
+<RenderIfVisible class={twMerge('group relative aspect-portrait border-2 border-black', className)}>
+	<a href="/manga/{data.id}/{data.title}" title={data.title}>
 		<Image
 			src={data.picture}
 			alt={data.title}
-			class="w-full h-full object-cover hover:opacity-70 {data.nsfw && 'blur'} group-hover:blur-0"
+			class={twMerge('h-full w-full object-cover group-hover:blur-0', data.nsfw && !nsfw && 'blur')}
 		/>
 		<div
-			class="opacity-0 group-hover:opacity-100 absolute bottom-0 w-full text-2xs md:text-xs lg:text-sm text-center bg-white dark:bg-black line-clamp-1 p-0.5 border-t border-black group-hover:text-black dark:group-hover:text-white"
+			class="absolute bottom-0 line-clamp-1 w-full break-all border-t border-black bg-white p-0.5 text-center text-xs opacity-0 transition-opacity group-hover:opacity-100 lg:text-sm"
 		>
 			{data.title}
 		</div>
-	</a>
-
-	{#if data.nsfw}
-		<div
-			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 group-hover:hidden"
-		>
-			<div class="bg-white dark:text-black text-xs px-3 py-1 border-2 border-black font-bold">
-				NSFW
+		{#if data.nsfw && !nsfw}
+			<div
+				class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
+			>
+				<div class="border border-black bg-white px-3 py-1 text-xs lg:text-sm">NSFW</div>
 			</div>
-		</div>
-	{/if}
+		{/if}
+	</a>
 </RenderIfVisible>

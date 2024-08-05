@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import Border from '$lib/components/Border.svelte';
-	import Head from '$lib/components/Head.svelte';
+	import Border from '$lib/components/commons/Border.svelte';
+	import Head from '$lib/components/commons/Head.svelte';
 	import PortraitPage from '$lib/components/pages/PortraitPage.svelte';
 
 	const status: number = $page.status;
@@ -11,10 +11,14 @@
 <Head title={status.toString()} description={message} />
 
 <PortraitPage>
-	<div class="flex items-center justify-center h-full">
-		<div class="grid gap-2">
-			<div class="text-9xl text-center">{status}</div>
-			<Border><span class="px-4 whitespace-nowrap">{message}</span></Border>
+	<div class="flex h-full w-full items-center justify-center">
+		<div class="grid gap-2 font-bold">
+			<h1 class="text-center text-8xl">{status}</h1>
+			<Border>
+				<span class="whitespace-nowrap px-4">
+					{message}
+				</span>
+			</Border>
 		</div>
 	</div>
 </PortraitPage>
