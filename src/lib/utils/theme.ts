@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 export const NSFW = writable<boolean>(false);
 
 const getNSFW = (): boolean => {
-	let nsfw = true;
+	let nsfw = false;
 	if ('nsfw' in localStorage) {
 		nsfw = localStorage.nsfw === 'true';
 	}
