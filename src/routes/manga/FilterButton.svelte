@@ -1,17 +1,23 @@
 <script lang="ts">
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
+	import Border from '$lib/components/commons/Border.svelte';
 	import FilterIcon from '$lib/components/icons/FilterIcon.svelte';
+	import { clickAway } from '$lib/utils';
 	import { createEventDispatcher } from 'svelte';
-	import FilterType from './FilterType.svelte';
-	import FilterDate from './FilterDate.svelte';
-	import FilterStatus from './FilterStatus.svelte';
+	import type { GenreResponseData } from '../api/genres/[id]/+server';
+	import type { MagazineResponseData } from '../api/magazines/[id]/+server';
 	import FilterAuthor from './FilterAuthor.svelte';
-	import Border from '$lib/components/Border.svelte';
-	import FilterMagazine from './FilterMagazine.svelte';
+	import FilterDate from './FilterDate.svelte';
 	import FilterGenre from './FilterGenre.svelte';
+	import FilterMagazine from './FilterMagazine.svelte';
+	import FilterNsfw from './FilterNsfw.svelte';
+	import FilterStatus from './FilterStatus.svelte';
+	import FilterType from './FilterType.svelte';
 
-	const dispatch = createEventDispatcher<{ submit: never }>();
+	const dispatch = createEventDispatcher<{ submit: any }>();
 
+	export let magazines: MagazineResponseData[];
+	export let genres: GenreResponseData[];
 	export let type: string;
 	export let status: string;
 	export let startDate: Date | null;
@@ -19,20 +25,14 @@
 	export let authorID: string;
 	export let magazineID: string;
 	export let genreID: string;
+	export let nsfw: string;
 
 	let authorName: string = '';
-	let magazineName: string = '';
-	let genreName: string = '';
-
 	let show: boolean = false;
 
-	const onToggle = () => {
-		show = !show;
-	};
+	const onToggle = () => (show = !show);
 
-	const onHide = () => {
-		show = false;
-	};
+	const onHide = () => (show = false);
 
 	const onSubmit = () => {
 		onHide();
@@ -47,43 +47,50 @@
 		authorID = '';
 		authorName = '';
 		magazineID = '';
-		magazineName = '';
 		genreID = '';
-		genreName = '';
 	};
 </script>
 
-<div class="relative">
+<div class="relative" use:clickAway on:clickAway={onHide}>
 	<IconButton title="filter" on:click={onToggle}>
-		<FilterIcon class="w-4 h-4 md:w-5 md:h-5" />
+		<FilterIcon class="size-4 lg:size-5" />
 	</IconButton>
 	{#if show}
 		<div
-			class="absolute z-10 top-full right-0 mt-1 w-md p-1 border-2 border-black grid grid-cols-6 gap-2 bg-gradient-to-t from-red-200 to-white dark:from-red-900 dark:to-black text-xs md:text-sm lg:text-base"
+			class="absolute right-0 top-full z-10 mt-1 grid w-md grid-cols-6 gap-2 border-2 border-black bg-gradient-to-t from-red-200 to-white p-2 text-xs lg:text-base"
 		>
-			<div class="col-span-3"><FilterType bind:value={type} /></div>
-			<div class="col-span-3"><FilterStatus bind:value={status} /></div>
-			<div class="col-span-3"><FilterDate bind:value={startDate} label="Start Date" /></div>
-			<div class="col-span-3"><FilterDate bind:value={endDate} label="End Date" /></div>
+			<div class="col-span-2">
+				<FilterType bind:value={type} />
+			</div>
+			<div class="col-span-2">
+				<FilterStatus bind:value={status} />
+			</div>
+			<div class="col-span-2">
+				<FilterNsfw bind:value={nsfw} />
+			</div>
+			<div class="col-span-3">
+				<FilterDate label="Start Date" bind:value={startDate} />
+			</div>
+			<div class="col-span-3">
+				<FilterDate label="End Date" bind:value={endDate} />
+			</div>
 			<div class="col-span-2">
 				<FilterAuthor bind:valueID={authorID} bind:valueName={authorName} />
 			</div>
 			<div class="col-span-2">
-				<FilterMagazine bind:valueID={magazineID} bind:valueName={magazineName} />
+				<FilterMagazine bind:value={magazineID} {magazines} />
 			</div>
 			<div class="col-span-2">
-				<FilterGenre bind:valueID={genreID} bind:valueName={genreName} />
+				<FilterGenre bind:value={genreID} {genres} />
 			</div>
 			<Border class="col-span-6" />
 			<button
-				on:click={onReset}
-				class="col-span-3 bg-white dark:bg-neutral-600 hover:bg-neutral-200 dark:hover:bg-neutral-400"
-				>Reset</button
+				class="col-span-3 border border-black bg-white hover:bg-neutral-200"
+				on:click={onReset}>Reset</button
 			>
 			<button
-				on:click={onSubmit}
-				class="col-span-3 bg-white dark:bg-neutral-600 hover:bg-neutral-200 dark:hover:bg-neutral-400"
-				>Submit</button
+				class="col-span-3 border border-black bg-white hover:bg-neutral-200"
+				on:click={onSubmit}>Submit</button
 			>
 		</div>
 	{/if}

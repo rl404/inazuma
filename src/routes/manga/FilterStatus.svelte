@@ -7,8 +7,8 @@
 </script>
 
 <div class="grid">
-	<div class="text-neutral-400">Status</div>
-	<select bind:value class="p-1 w-full bg-white dark:bg-neutral-600">
+	<div>Status</div>
+	<select bind:value class="w-full border border-black bg-white p-1">
 		<option value="">All</option>
 		{#each statuses as status}
 			<option value={status}>{mangaStatuses(status)}</option>

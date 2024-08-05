@@ -1,14 +1,14 @@
 <script lang="ts">
-	import Image from '$lib/components/Image.svelte';
+	import Image from '$lib/components/commons/Image.svelte';
 	import ChevronLeftIcon from '$lib/components/icons/ChevronLeftIcon.svelte';
 	import ChevronRightIcon from '$lib/components/icons/ChevronRightIcon.svelte';
-	import type { mangaResponseData } from '../../../api/manga/[id]/+server';
+	import { twMerge } from 'tailwind-merge';
+	import type { MangaResponseData } from '../../../api/manga/[id]/+server';
 
-	export let manga: mangaResponseData;
-	export { className as class };
-	let className: string;
+	export let manga: MangaResponseData;
+	export let nsfw: boolean;
 
-	let pictures: string[] = [manga.picture, ...manga.pictures];
+	$: pictures = [manga.picture, ...manga.pictures];
 	let i: number = 0;
 
 	const prev = () => {
@@ -28,36 +28,35 @@
 	};
 </script>
 
-<div class="relative overflow-hidden group {className}">
+<div class="group relative w-full border-2 border-black">
 	<Image
 		src={pictures[i]}
 		alt={manga.title}
-		class="w-full h-full object-cover {manga.nsfw && 'blur'} group-hover:blur-0"
+		class={twMerge('h-full w-full object-cover', manga.nsfw && !nsfw && 'blur group-hover:blur-0')}
 	/>
 
-	{#if manga.nsfw}
+	{#if manga.nsfw && !nsfw}
 		<div
-			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-45 group-hover:hidden"
+			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
 		>
-			<div class="bg-white dark:text-black px-4 py-1 border-2 border-black font-bold">NSFW</div>
+			<div class="border border-black bg-white px-3 py-1 text-xs lg:text-sm">NSFW</div>
 		</div>
 	{/if}
 
 	{#if pictures.length > 1}
 		<button
-			on:click={prev}
-			class="absolute bottom-1 left-1 bg-white dark:text-black border border-black hover:opacity-70 rounded-full p-1"
 			title="previous picture"
+			class="absolute bottom-1 left-1 rounded-full border border-black bg-white p-1 hover:bg-red-200"
+			on:click={prev}
 		>
-			<ChevronLeftIcon class="w-4 h-4" />
+			<ChevronLeftIcon class="size-3 lg:size-5" />
 		</button>
-
 		<button
-			on:click={next}
-			class="absolute bottom-1 right-1 bg-white dark:text-black border border-black hover:opacity-70 rounded-full p-1"
 			title="next picture"
+			class="absolute bottom-1 right-1 rounded-full border border-black bg-white p-1 hover:bg-red-200"
+			on:click={next}
 		>
-			<ChevronRightIcon class="w-4 h-4" />
+			<ChevronRightIcon class="size-3 lg:size-5" />
 		</button>
 	{/if}
 </div>
