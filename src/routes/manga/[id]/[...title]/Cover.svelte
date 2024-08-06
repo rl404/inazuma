@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { PUBLIC_MAL_HOST } from '$env/static/public';
 	import Image from '$lib/components/commons/Image.svelte';
+	import { toURL } from '$lib/utils';
 	import { twMerge } from 'tailwind-merge';
 	import type { MangaResponseData } from '../../../api/manga/[id]/+server';
 
@@ -20,7 +21,7 @@
 
 	<div class="absolute bottom-4 right-4 w-3/4 p-4 text-right">
 		<a
-			href="{PUBLIC_MAL_HOST}/manga/{manga.id}/{manga.title}"
+			href="{PUBLIC_MAL_HOST}/manga/{manga.id}/{toURL(manga.title)}"
 			target="_blank"
 			rel="noreferral"
 			class="text-xl font-bold shadow-white text-shadow-sm lg:text-3xl"

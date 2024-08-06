@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Image from '$lib/components/commons/Image.svelte';
 	import RenderIfVisible from '$lib/components/commons/RenderIfVisible.svelte';
+	import { toURL } from '$lib/utils';
 	import { NSFW } from '$lib/utils/theme';
 	import { twMerge } from 'tailwind-merge';
 	import type { MangaResponseData } from '../../../routes/api/manga/[id]/+server';
@@ -15,7 +16,7 @@
 </script>
 
 <RenderIfVisible class={twMerge('group relative aspect-portrait border-2 border-black', className)}>
-	<a href="/manga/{data.id}/{data.title}" title={data.title}>
+	<a href="/manga/{data.id}/{toURL(data.title)}" title={data.title}>
 		<Image
 			src={data.picture}
 			alt={data.title}

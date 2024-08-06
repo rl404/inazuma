@@ -66,3 +66,7 @@ export const formatMALDate = (year: number, month: number, day: number): string 
 	if (day > 0) d.push(day.toString());
 	return d.length > 0 ? d.join(' ') : '-';
 };
+
+export const toURL = (str: string): string => {
+	return str.replace(/[^a-zA-Z0-9-]+/g, '_').replace(/^_+|_+$/g, '');
+};

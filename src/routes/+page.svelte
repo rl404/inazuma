@@ -9,6 +9,10 @@
 
 <Head title="Home" description="Manga data in manga style." />
 
+<svelte:head>
+	<link rel="canonical" href={`https://inazuma.rl404.com`} />
+</svelte:head>
+
 <PortraitPage>
 	<Cover />
 </PortraitPage>
