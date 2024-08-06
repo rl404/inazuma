@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Head from '$lib/components/commons/Head.svelte';
 	import PortraitPage from '$lib/components/pages/PortraitPage.svelte';
+	import { toURL } from '$lib/utils';
 	import { NSFW } from '$lib/utils/theme';
 	import type { MangaResponse } from '../../../api/manga/[id]/+server';
 	import Content1 from './Content1.svelte';
@@ -17,6 +18,13 @@
 </script>
 
 <Head title={manga.title} description={manga.synopsis} image={manga.picture} />
+
+<svelte:head>
+	<link
+		rel="canonical"
+		href={`https://inazuma.rl404.com/manga/${manga.id}/${toURL(manga.title)}`}
+	/>
+</svelte:head>
 
 <PortraitPage>
 	<Cover {manga} {nsfw} />
