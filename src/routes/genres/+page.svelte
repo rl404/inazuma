@@ -77,6 +77,10 @@
 
 <Head title="Genre List" />
 
+<svelte:head>
+	<link rel="canonical" href={`https://inazuma.rl404.com/genres`} />
+</svelte:head>
+
 <PortraitPage>
 	<div class="grid grid-cols-5 gap-1">
 		<div class="col-span-5">
