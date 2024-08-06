@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Image from '$lib/components/commons/Image.svelte';
 	import RenderIfVisible from '$lib/components/commons/RenderIfVisible.svelte';
-	import { formatMALDate } from '$lib/utils';
+	import { formatMALDate, toURL } from '$lib/utils';
 	import { mangaRelations, mangaStatuses, mangaTypes } from '$lib/utils/const';
 	import type { MangaResponseData } from '../../../api/manga/[id]/+server';
 
@@ -166,7 +166,7 @@
 				>
 					<a
 						title={related.title}
-						href="/manga/{related.id}/{related.title}"
+						href="/manga/{related.id}/{toURL(related.title)}"
 						class="grid h-full w-full grid-cols-3 gap-1"
 					>
 						<Image
