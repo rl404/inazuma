@@ -28,7 +28,7 @@
 
 <svelte:window on:scroll={onScroll} />
 
-<div class="fixed bottom-0 right-0 p-4" title="scroll to top" class:hidden>
+<div class="fixed right-0 bottom-0 p-4" title="scroll to top" class:hidden>
 	<button
 		type="button"
 		class="rounded-full border border-black bg-white p-3 hover:opacity-70"

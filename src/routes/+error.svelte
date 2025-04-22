@@ -15,7 +15,7 @@
 		<div class="grid gap-2 font-bold">
 			<h1 class="text-center text-8xl">{status}</h1>
 			<Border>
-				<span class="whitespace-nowrap px-4">
+				<span class="px-4 whitespace-nowrap">
 					{message}
 				</span>
 			</Border>

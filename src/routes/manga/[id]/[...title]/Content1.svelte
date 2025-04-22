@@ -23,7 +23,7 @@
 </script>
 
 <div class="grid gap-1">
-	<div class="line-clamp-1 break-all text-xs lg:text-base">{manga.id}. {manga.title}</div>
+	<div class="line-clamp-1 text-xs break-all lg:text-base">{manga.id}. {manga.title}</div>
 
 	<div class="grid grid-cols-4 gap-1">
 		<Pictures {manga} {nsfw} />
@@ -73,7 +73,7 @@
 	</div>
 
 	<div
-		class="whitespace-pre-wrap border-2 border-black bg-gradient-to-t from-red-100 to-white p-2 text-justify text-sm lg:text-base"
+		class="border-2 border-black bg-gradient-to-t from-red-100 to-white p-2 text-justify text-sm whitespace-pre-wrap lg:text-base"
 	>
 		{tabs[tabI].content}
 	</div>
