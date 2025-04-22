@@ -3,7 +3,6 @@
 	import Border from '$lib/components/commons/Border.svelte';
 	import FilterIcon from '$lib/components/icons/FilterIcon.svelte';
 	import { clickAway } from '$lib/utils';
-	import { createEventDispatcher } from 'svelte';
 	import type { GenreResponseData } from '../api/genres/[id]/+server';
 	import type { MagazineResponseData } from '../api/magazines/[id]/+server';
 	import FilterAuthor from './FilterAuthor.svelte';
@@ -13,8 +12,6 @@
 	import FilterNsfw from './FilterNsfw.svelte';
 	import FilterStatus from './FilterStatus.svelte';
 	import FilterType from './FilterType.svelte';
-
-	const dispatch = createEventDispatcher<{ submit: any }>();
 
 	export let magazines: MagazineResponseData[];
 	export let genres: GenreResponseData[];
@@ -26,6 +23,7 @@
 	export let magazineID: string;
 	export let genreID: string;
 	export let nsfw: string;
+	export let onSubmit: () => void;
 
 	let authorName: string = '';
 	let show: boolean = false;
@@ -34,9 +32,9 @@
 
 	const onHide = () => (show = false);
 
-	const onSubmit = () => {
+	const onClick = () => {
 		onHide();
-		dispatch('submit');
+		onSubmit();
 	};
 
 	const onReset = () => {
@@ -57,7 +55,7 @@
 	</IconButton>
 	{#if show}
 		<div
-			class="absolute right-0 top-full z-10 mt-1 grid w-md grid-cols-6 gap-2 border-2 border-black bg-gradient-to-t from-red-200 to-white p-2 text-xs lg:text-base"
+			class="absolute top-full right-0 z-10 mt-1 grid w-md grid-cols-6 gap-2 border-2 border-black bg-gradient-to-t from-red-200 to-white p-2 text-xs lg:text-base"
 		>
 			<div class="col-span-2">
 				<FilterType bind:value={type} />
@@ -90,7 +88,7 @@
 			>
 			<button
 				class="col-span-3 border border-black bg-white hover:bg-neutral-200"
-				on:click={onSubmit}>Submit</button
+				on:click={onClick}>Submit</button
 			>
 		</div>
 	{/if}

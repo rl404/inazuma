@@ -32,12 +32,12 @@
 	<Image
 		src={pictures[i]}
 		alt={manga.title}
-		class={twMerge('h-full w-full object-cover', manga.nsfw && !nsfw && 'blur group-hover:blur-0')}
+		class={twMerge('h-full w-full object-cover', manga.nsfw && !nsfw && 'group-hover:blur-0 blur')}
 	/>
 
 	{#if manga.nsfw && !nsfw}
 		<div
-			class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
+			class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -rotate-45 group-hover:hidden"
 		>
 			<div class="border border-black bg-white px-3 py-1 text-xs lg:text-sm">NSFW</div>
 		</div>
@@ -53,7 +53,7 @@
 		</button>
 		<button
 			title="next picture"
-			class="absolute bottom-1 right-1 rounded-full border border-black bg-white p-1 hover:bg-red-200"
+			class="absolute right-1 bottom-1 rounded-full border border-black bg-white p-1 hover:bg-red-200"
 			on:click={next}
 		>
 			<ChevronRightIcon class="size-3 lg:size-5" />

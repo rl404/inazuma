@@ -1,24 +1,23 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import XmarkIcon from '$lib/components/icons/XmarkIcon.svelte';
 	import { twMerge } from 'tailwind-merge';
-	import XmarkIcon from '../icons/XmarkIcon.svelte';
-
-	const dispatch = createEventDispatcher<{ enter: any; reset: any }>();
 
 	export let value: string = '';
 	export let placeholder: string = '';
 	export let inputClass: string = '';
+	export let onEnter: () => void;
+	export let onReset: () => void;
 	export { className as class };
 	let className: string = '';
 
-	const onEnter = (e: KeyboardEvent) => {
+	const onKeypress = (e: KeyboardEvent) => {
 		if (e.key !== 'Enter') return;
-		dispatch('enter');
+		onEnter();
 	};
 
 	const resetValue = () => {
 		value = '';
-		dispatch('reset');
+		onReset();
 	};
 </script>
 
@@ -26,9 +25,9 @@
 	<input
 		{placeholder}
 		type="text"
-		class={twMerge('w-full border-2 border-black pl-1 pr-9 focus:outline-none', inputClass)}
+		class={twMerge('w-full border-2 border-black pr-9 pl-1 focus:outline-none', inputClass)}
 		bind:value
-		on:keypress={onEnter}
+		on:keypress={onKeypress}
 	/>
 
 	{#if value !== ''}

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
-	import { page as appPage } from '$app/stores';
+	import { afterNavigate, goto } from '$app/navigation';
+	import { page as appPage } from '$app/state';
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import Head from '$lib/components/commons/Head.svelte';
 	import InfiniteScroll from '$lib/components/commons/InfiniteScroll.svelte';
@@ -34,20 +34,19 @@
 	let page: number = 1;
 	let limit: number = 25;
 	let total: number = 0;
-	let hasMore: boolean = true;
-	let loading: boolean = false;
+	let hasMore: boolean = false;
+	let loading: boolean = true;
 	let error: string = '';
 
 	$: mangaData = [...mangaData, ...newData];
 	$: newPageData = groupArr(mangaData, limit);
-	$: $appPage && onURLChange();
 
-	const onURLChange = () => {
+	afterNavigate(() => {
 		mangaData = [];
 		newData = [];
 		newPageData = [];
 
-		const params = $appPage.url.searchParams;
+		const params = appPage.url.searchParams;
 
 		title = params.get('title') || '';
 		type = params.get('type') || '';
@@ -61,7 +60,7 @@
 		sort = params.get('sort') || '-mean';
 
 		fetchData();
-	};
+	});
 
 	const fetchData = () => {
 		loading = true;
@@ -89,11 +88,7 @@
 			.then((resp) => {
 				newData = resp.data.data;
 				total = resp.data.meta.total;
-				if (newData.length > 0) {
-					hasMore = true;
-				} else {
-					hasMore = false;
-				}
+				hasMore = newData.length >= limit;
 			})
 			.catch((err) => (error = getAxiosError(err)))
 			.finally(() => (loading = false));
@@ -143,13 +138,13 @@
 				class="grow lg:text-xl"
 				inputClass="bg-gradient-to-r from-white to-red-200"
 				bind:value={title}
-				on:enter={onSearch}
-				on:reset={onSearch}
+				onEnter={onSearch}
+				onReset={onSearch}
 			/>
 			<IconButton title="search" on:click={onSearch}>
 				<SearchIcon class="size-4 lg:size-5" />
 			</IconButton>
-			<SortButton bind:value={sort} on:sort={onSearch} />
+			<SortButton bind:value={sort} onSort={onSearch} />
 			<FilterButton
 				magazines={data.magazines.data}
 				genres={data.genres.data}
@@ -161,7 +156,7 @@
 				bind:magazineID
 				bind:genreID
 				bind:nsfw
-				on:submit={onSearch}
+				onSubmit={onSearch}
 			/>
 		</div>
 		{#each mangaData.slice(0, limit) as manga}
@@ -191,4 +186,4 @@
 	<Loading class="size-5" />
 {/if}
 
-<InfiniteScroll {hasMore} on:loadMore={loadMore} />
+<InfiniteScroll {hasMore} onLoadMore={loadMore} />

@@ -74,7 +74,7 @@
 			{#each data as author}
 				<button
 					title={formatAuthor(author.first_name, author.last_name)}
-					class="w-full break-all px-1 text-left text-xs hover:bg-neutral-200"
+					class="w-full px-1 text-left text-xs break-all hover:bg-neutral-200"
 					on:click={() => onSelect(author.id, formatAuthor(author.first_name, author.last_name))}
 				>
 					<span class="line-clamp-1">
