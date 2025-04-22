@@ -2,11 +2,9 @@
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import SortIcon from '$lib/components/icons/SortIcon.svelte';
 	import { clickAway } from '$lib/utils';
-	import { createEventDispatcher } from 'svelte';
-
-	const dispatch = createEventDispatcher<{ sort: any }>();
 
 	export let value: string;
+	export let onSort: () => void;
 
 	const sorts = [
 		{ label: 'Title ASC', value: 'title' },
@@ -31,9 +29,9 @@
 
 	const onHide = () => (show = false);
 
-	const onSort = () => {
+	const onChange = () => {
 		onHide();
-		dispatch('sort');
+		onSort();
 	};
 </script>
 
@@ -43,11 +41,11 @@
 	</IconButton>
 	{#if show}
 		<div
-			class="absolute right-0 top-full z-10 mt-1 grid w-36 gap-1 border-2 border-black bg-gradient-to-t from-red-200 to-white p-1 text-xs lg:w-48 lg:text-base"
+			class="absolute top-full right-0 z-10 mt-1 grid w-36 gap-1 border-2 border-black bg-gradient-to-t from-red-200 to-white p-1 text-xs lg:w-48 lg:text-base"
 		>
 			{#each sorts as sort}
 				<label>
-					<input type="radio" bind:group={value} value={sort.value} on:change={onSort} />
+					<input type="radio" bind:group={value} value={sort.value} on:change={onChange} />
 					{sort.label}
 				</label>
 			{/each}

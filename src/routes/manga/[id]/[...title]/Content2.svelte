@@ -31,7 +31,7 @@
 </script>
 
 <div class="grid grid-cols-12 gap-1">
-	<div class="col-span-12 line-clamp-1 break-all text-xs lg:text-base">
+	<div class="col-span-12 line-clamp-1 text-xs break-all lg:text-base">
 		{manga.id}. {manga.title}
 	</div>
 
@@ -178,7 +178,7 @@
 							<div class="text-xs text-neutral-400 lg:text-sm">
 								{mangaRelations(related.relation)}
 							</div>
-							<div class="line-clamp-4 break-all text-sm lg:text-base">{related.title}</div>
+							<div class="line-clamp-4 text-sm break-all lg:text-base">{related.title}</div>
 						</div>
 					</a>
 				</RenderIfVisible>
