@@ -22,7 +22,7 @@
 			</a>
 			<button
 				title="toggle grayscale"
-				class="rounded-full border border-black bg-white p-2"
+				class="cursor-pointer rounded-full border border-black bg-white p-2 transition-opacity hover:opacity-70"
 				on:click={toggleGrayscale}
 			>
 				<PaletteIcon class="size-6" />
@@ -30,7 +30,7 @@
 			<button
 				title="toggle grayscale"
 				class={twMerge(
-					'rounded-full border border-black bg-white p-2 font-bold',
+					'cursor-pointer rounded-full border border-black bg-white p-2 font-bold transition-opacity hover:opacity-70',
 					!nsfw && 'line-through'
 				)}
 				on:click={toggleNSFW}
