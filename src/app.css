@@ -17,6 +17,12 @@
 	a {
 		@apply transition-opacity hover:opacity-70;
 	}
+
+	button,
+	label,
+	select {
+		@apply cursor-pointer;
+	}
 }
 
 @layer components {
