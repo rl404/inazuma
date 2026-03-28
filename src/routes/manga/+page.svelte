@@ -136,7 +136,7 @@
 			<TextInput
 				placeholder="anime title..."
 				class="grow lg:text-xl"
-				inputClass="bg-gradient-to-r from-white to-red-200"
+				inputClass="bg-linear-to-r from-white to-red-200"
 				bind:value={title}
 				onEnter={onSearch}
 				onReset={onSearch}

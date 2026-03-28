@@ -85,7 +85,7 @@
 			<TextInput
 				placeholder="author name..."
 				class="grow lg:text-xl"
-				inputClass="bg-gradient-to-r from-white to-blue-200"
+				inputClass="bg-linear-to-r from-white to-blue-200"
 				bind:value={name}
 				onEnter={onSearch}
 				onReset={onSearch}
@@ -98,7 +98,7 @@
 			<a
 				href="/manga?author_id={author.id}"
 				title={formatAuthor(author.first_name, author.last_name)}
-				class="flex aspect-video items-center justify-center border-2 border-black bg-gradient-to-r from-white to-blue-50 p-1 text-center lg:p-2"
+				class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-blue-50 p-1 text-center lg:p-2"
 			>
 				<span class="line-clamp-2 text-sm lg:text-base">
 					{formatAuthor(author.first_name, author.last_name)}
@@ -118,7 +118,7 @@
 				<a
 					href="/manga?author_id={author.id}"
 					title={formatAuthor(author.first_name, author.last_name)}
-					class="flex aspect-video items-center justify-center border-2 border-black bg-gradient-to-r from-white to-blue-50 p-1 text-center lg:p-2"
+					class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-blue-50 p-1 text-center lg:p-2"
 				>
 					<span class="line-clamp-2 text-sm lg:text-base">
 						{formatAuthor(author.first_name, author.last_name)}

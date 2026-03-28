@@ -55,7 +55,7 @@
 	</IconButton>
 	{#if show}
 		<div
-			class="absolute top-full right-0 z-10 mt-1 grid w-md grid-cols-6 gap-2 border-2 border-black bg-gradient-to-t from-red-200 to-white p-2 text-xs lg:text-base"
+			class="absolute top-full right-0 z-10 mt-1 grid w-md grid-cols-6 gap-2 border-2 border-black bg-linear-to-t from-red-200 to-white p-2 text-xs lg:text-base"
 		>
 			<div class="col-span-2">
 				<FilterType bind:value={type} />

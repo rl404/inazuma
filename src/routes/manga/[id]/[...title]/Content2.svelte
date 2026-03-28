@@ -36,7 +36,7 @@
 	</div>
 
 	<div
-		class="col-span-6 grid grid-cols-2 border-2 border-black bg-gradient-to-t from-red-100 to-white p-2"
+		class="col-span-6 grid grid-cols-2 border-2 border-black bg-linear-to-t from-red-100 to-white p-2"
 	>
 		<div>
 			<div class="text-xs text-neutral-400 lg:text-sm">Type</div>
@@ -49,7 +49,7 @@
 	</div>
 
 	<div
-		class="col-span-6 grid grid-cols-2 border-2 border-black bg-gradient-to-t from-red-100 to-white p-2"
+		class="col-span-6 grid grid-cols-2 border-2 border-black bg-linear-to-t from-red-100 to-white p-2"
 	>
 		<div>
 			<div class="text-xs text-neutral-400 lg:text-sm">Start Date</div>
@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-	<div class="col-span-3 grid border-2 border-black bg-gradient-to-t from-orange-100 to-white p-2">
+	<div class="col-span-3 grid border-2 border-black bg-linear-to-t from-orange-100 to-white p-2">
 		<div class="text-xs text-neutral-400 lg:text-sm">Volume</div>
 		<div class="text-sm lg:text-base">{manga.volume.toLocaleString()}</div>
 		<div class="text-xs text-neutral-400 lg:text-sm">Chapter</div>
@@ -73,7 +73,7 @@
 	</div>
 
 	<div
-		class="col-span-9 grid grid-cols-3 border-2 border-black bg-gradient-to-t from-orange-100 to-white p-2"
+		class="col-span-9 grid grid-cols-3 border-2 border-black bg-linear-to-t from-orange-100 to-white p-2"
 	>
 		<div>
 			<div class="text-xs text-neutral-400 lg:text-sm">Rank</div>
@@ -102,7 +102,7 @@
 	</div>
 
 	<div class="col-span-3 flex flex-col gap-1">
-		<div class="border-2 border-black bg-gradient-to-t from-yellow-100 to-white p-2">
+		<div class="border-2 border-black bg-linear-to-t from-yellow-100 to-white p-2">
 			<div class="text-xs text-neutral-400 lg:text-sm">Authors</div>
 			<div class="grid text-sm lg:text-base">
 				{#if manga.authors.length === 0}
@@ -119,7 +119,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="border-2 border-black bg-gradient-to-t from-green-100 to-white p-2">
+		<div class="border-2 border-black bg-linear-to-t from-green-100 to-white p-2">
 			<div class="text-xs text-neutral-400 lg:text-sm">Serialization</div>
 			<div class="grid text-sm lg:text-base">
 				{#if manga.serialization.length === 0}
@@ -136,7 +136,7 @@
 				{/each}
 			</div>
 		</div>
-		<div class="border-2 border-black bg-gradient-to-t from-blue-100 to-white p-2">
+		<div class="border-2 border-black bg-linear-to-t from-blue-100 to-white p-2">
 			<div class="text-xs text-neutral-400 lg:text-sm">Genres</div>
 			<div class="grid text-sm lg:text-base">
 				{#if manga.genres.length === 0}
@@ -155,14 +155,14 @@
 		<div class="grid grid-cols-2 gap-1">
 			{#if manga.related.length === 0}
 				<div
-					class="col-span-2 border-2 border-black bg-gradient-to-t from-purple-100 to-white p-2 text-center text-sm lg:text-base"
+					class="col-span-2 border-2 border-black bg-linear-to-t from-purple-100 to-white p-2 text-center text-sm lg:text-base"
 				>
 					no related manga
 				</div>
 			{/if}
 			{#each manga.related as related}
 				<RenderIfVisible
-					class="aspect-video border-2 border-black bg-gradient-to-t from-purple-100 to-white"
+					class="aspect-video border-2 border-black bg-linear-to-t from-purple-100 to-white"
 				>
 					<a
 						title={related.title}
