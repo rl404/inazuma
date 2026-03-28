@@ -41,7 +41,7 @@
 	</IconButton>
 	{#if show}
 		<div
-			class="absolute top-full right-0 z-10 mt-1 grid w-36 gap-1 border-2 border-black bg-gradient-to-t from-red-200 to-white p-1 text-xs lg:w-48 lg:text-base"
+			class="absolute top-full right-0 z-10 mt-1 grid w-36 gap-1 border-2 border-black bg-linear-to-t from-red-200 to-white p-1 text-xs lg:w-48 lg:text-base"
 		>
 			{#each sorts as sort}
 				<label>

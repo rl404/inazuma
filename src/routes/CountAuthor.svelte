@@ -17,7 +17,7 @@
 	});
 </script>
 
-<a href="/authors" class="block h-full w-full bg-gradient-to-t from-blue-200 to-white">
+<a href="/authors" class="block h-full w-full bg-linear-to-t from-blue-200 to-white">
 	{#if loading}
 		<div class="flex h-full w-full items-center justify-center">
 			<Loading class="size-4" />

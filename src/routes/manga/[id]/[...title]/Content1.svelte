@@ -29,29 +29,25 @@
 		<Pictures {manga} {nsfw} />
 		<div class="col-span-3 grid gap-1">
 			{#if manga.alternative_titles.synonyms.length > 0}
-				<div class="flex flex-col border-2 border-black bg-gradient-to-l from-red-100 to-white p-2">
+				<div class="flex flex-col border-2 border-black bg-linear-to-l from-red-100 to-white p-2">
 					<div class="text-xs text-neutral-400 lg:text-sm">Synonyms</div>
 					<div class="text-sm lg:text-base">{manga.alternative_titles.synonyms.join(', ')}</div>
 				</div>
 			{/if}
 			{#if manga.alternative_titles.english !== ''}
-				<div
-					class="flex flex-col border-2 border-black bg-gradient-to-l from-blue-100 to-white p-2"
-				>
+				<div class="flex flex-col border-2 border-black bg-linear-to-l from-blue-100 to-white p-2">
 					<div class="text-xs text-neutral-400 lg:text-sm">English</div>
 					<div class="text-sm lg:text-base">{manga.alternative_titles.english}</div>
 				</div>
 			{/if}
 			{#if manga.alternative_titles.japanese !== ''}
-				<div
-					class="flex flex-col border-2 border-black bg-gradient-to-l from-green-100 to-white p-2"
-				>
+				<div class="flex flex-col border-2 border-black bg-linear-to-l from-green-100 to-white p-2">
 					<div class="text-xs text-neutral-400 lg:text-sm">Japanese</div>
 					<div class="text-sm lg:text-base">{manga.alternative_titles.japanese}</div>
 				</div>
 			{/if}
 			{#if manga.alternative_titles.synonyms.length === 0 && manga.alternative_titles.english === '' && manga.alternative_titles.japanese === ''}
-				<div class="border-2 border-black bg-gradient-to-l from-neutral-100 to-white p-2">
+				<div class="border-2 border-black bg-linear-to-l from-neutral-100 to-white p-2">
 					<div class="text-sm lg:text-base">No alternative titles</div>
 				</div>
 			{/if}
@@ -73,7 +69,7 @@
 	</div>
 
 	<div
-		class="border-2 border-black bg-gradient-to-t from-red-100 to-white p-2 text-justify text-sm whitespace-pre-wrap lg:text-base"
+		class="border-2 border-black bg-linear-to-t from-red-100 to-white p-2 text-justify text-sm whitespace-pre-wrap lg:text-base"
 	>
 		{tabs[tabI].content}
 	</div>
