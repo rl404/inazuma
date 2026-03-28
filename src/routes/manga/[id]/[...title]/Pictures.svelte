@@ -8,7 +8,7 @@
 	export let manga: MangaResponseData;
 	export let nsfw: boolean;
 
-	$: pictures = [manga.picture, ...manga.pictures];
+	$: pictures = [...new Set([manga.picture, ...manga.pictures])];
 	let i: number = 0;
 
 	const prev = () => {
