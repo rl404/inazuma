@@ -6,7 +6,7 @@
 <Image
 	src="/inazuma.png"
 	alt="inazuma"
-	class="h-full w-full border-2 border-black bg-gradient-to-b from-white to-red-400 object-cover object-center"
+	class="h-full w-full border-2 border-black bg-linear-to-b from-white to-red-400 object-cover object-center"
 />
 
 <div class="absolute top-0 left-0 flex h-full w-full items-center justify-center">

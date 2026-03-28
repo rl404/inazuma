@@ -17,7 +17,7 @@
 	});
 </script>
 
-<a href="/manga" class="block h-full w-full bg-gradient-to-t from-red-200 to-white">
+<a href="/manga" class="block h-full w-full bg-linear-to-t from-red-200 to-white">
 	{#if loading}
 		<div class="flex h-full w-full items-center justify-center">
 			<Loading class="size-4" />

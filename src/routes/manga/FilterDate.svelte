@@ -16,7 +16,7 @@
 			placeholder="date"
 			format="yyyy-MM-dd"
 			closeOnSelection
-			class="[&>.picker]:right-0 [&>input]:h-[22px] [&>input]:!w-full [&>input]:!rounded-none [&>input]:!border [&>input]:!border-black [&>input]:bg-white focus:[&>input]:!shadow-none"
+			class="[&>.picker]:right-0 [&>input]:h-5.5 [&>input]:w-full! [&>input]:rounded-none! [&>input]:border! [&>input]:border-black! [&>input]:bg-white focus:[&>input]:shadow-none!"
 		/>
 		{#if value != null}
 			<button
