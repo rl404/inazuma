@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Image from '$lib/components/commons/Image.svelte';
 	import RenderIfVisible from '$lib/components/commons/RenderIfVisible.svelte';
 	import { formatMALDate, toURL } from '$lib/utils';
@@ -108,10 +109,10 @@
 				{#if manga.authors.length === 0}
 					<div>-</div>
 				{/if}
-				{#each manga.authors as author}
+				{#each manga.authors as author (author.id)}
 					<a
 						title={`${author.name} (${author.role})`}
-						href="/manga?author_id={author.id}"
+						href={resolve(`/manga?author_id=${author.id}`)}
 						class="line-clamp-1 break-all"
 					>
 						{author.name}
@@ -125,10 +126,10 @@
 				{#if manga.serialization.length === 0}
 					<div>-</div>
 				{/if}
-				{#each manga.serialization as magazine}
+				{#each manga.serialization as magazine (magazine.id)}
 					<a
 						title={magazine.name}
-						href="/manga?magazine_id={magazine.id}"
+						href={resolve(`/manga?magazine_id=${magazine.id}`)}
 						class="line-clamp-1 break-all"
 					>
 						{magazine.name}
@@ -142,8 +143,12 @@
 				{#if manga.genres.length === 0}
 					<div>-</div>
 				{/if}
-				{#each manga.genres as genre}
-					<a title={genre.name} href="/manga?genre_id={genre.id}" class="line-clamp-1 break-all">
+				{#each manga.genres as genre (genre.id)}
+					<a
+						title={genre.name}
+						href={resolve(`/manga?genre_id=${genre.id}`)}
+						class="line-clamp-1 break-all"
+					>
 						{genre.name}
 					</a>
 				{/each}
@@ -160,13 +165,13 @@
 					no related manga
 				</div>
 			{/if}
-			{#each manga.related as related}
+			{#each manga.related as related (related.id)}
 				<RenderIfVisible
 					class="aspect-video border-2 border-black bg-linear-to-t from-purple-100 to-white"
 				>
 					<a
 						title={related.title}
-						href="/manga/{related.id}/{toURL(related.title)}"
+						href={resolve(`/manga/${related.id}/${toURL(related.title)}`)}
 						class="grid h-full w-full grid-cols-3 gap-1"
 					>
 						<Image

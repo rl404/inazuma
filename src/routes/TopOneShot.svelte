@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Loading from '$lib/components/commons/Loading.svelte';
 	import MangaGrid from '$lib/components/layouts/MangaGrid.svelte';
 	import { getAxiosError } from '$lib/utils';
@@ -21,7 +22,7 @@
 
 <div class="col-span-5 flex items-center justify-between">
 	<div class="font-bold lg:text-xl">Top One-Shot</div>
-	<a href="/manga?type=ONE_SHOT&sort=-mean" class="more-button">More</a>
+	<a href={resolve(`/manga?type=ONE_SHOT&sort=-mean`)} class="more-button">More</a>
 </div>
 
 {#if loading}
@@ -33,7 +34,7 @@
 		{error}
 	</div>
 {:else}
-	{#each data as manga}
+	{#each data as manga (manga.id)}
 		<MangaGrid data={manga} />
 	{/each}
 {/if}
