@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterNavigate, goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page as appPage } from '$app/state';
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import Head from '$lib/components/commons/Head.svelte';
@@ -117,14 +118,14 @@
 			.map((v) => `${v[0]}=${v[1] ?? ''}`)
 			.join('&');
 
-		goto(`?${queries}`);
+		goto(resolve(`/manga?${queries}`));
 	};
 </script>
 
 <Head title="Manga List" />
 
 <svelte:head>
-	<link rel="canonical" href={`https://inazuma.rl404.com/manga`} />
+	<link rel="canonical" href="https://inazuma.rl404.com/manga" />
 </svelte:head>
 
 <PortraitPage>
@@ -159,7 +160,7 @@
 				onSubmit={onSearch}
 			/>
 		</div>
-		{#each mangaData.slice(0, limit) as manga}
+		{#each mangaData.slice(0, limit) as manga (manga.id)}
 			<MangaGrid data={manga} />
 		{/each}
 		{#if !loading && mangaData.length === 0 && error === ''}
@@ -168,10 +169,10 @@
 	</div>
 </PortraitPage>
 
-{#each newPageData.slice(1) as newPage}
+{#each newPageData.slice(1) as newPage, i (i)}
 	<PortraitPage>
 		<div class="grid grid-cols-5 gap-1">
-			{#each newPage as manga}
+			{#each newPage as manga (manga.id)}
 				<MangaGrid data={manga} />
 			{/each}
 		</div>

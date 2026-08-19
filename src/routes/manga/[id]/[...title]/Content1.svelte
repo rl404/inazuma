@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="flex items-center gap-1">
-		{#each tabs as tab, i}
+		{#each tabs as tab, i (tab.label)}
 			<button
 				class={twMerge(
 					'border-2 border-black px-2 transition-colors hover:bg-red-200 hover:text-black',
