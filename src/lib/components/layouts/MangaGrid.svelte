@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Image from '$lib/components/commons/Image.svelte';
 	import RenderIfVisible from '$lib/components/commons/RenderIfVisible.svelte';
 	import { toURL } from '$lib/utils';
@@ -16,7 +17,7 @@
 </script>
 
 <RenderIfVisible class={twMerge('group aspect-portrait relative border-2 border-black', className)}>
-	<a href="/manga/{data.id}/{toURL(data.title)}" title={data.title}>
+	<a href={resolve(`/manga/${data.id}/${toURL(data.title)}`)} title={data.title}>
 		<Image
 			src={data.picture}
 			alt={data.title}

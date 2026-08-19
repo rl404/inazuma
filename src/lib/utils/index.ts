@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { error } from '@sveltejs/kit';
 import type { AxiosError } from 'axios';
 import axios from 'axios';

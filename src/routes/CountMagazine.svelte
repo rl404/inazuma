@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import Loading from '$lib/components/commons/Loading.svelte';
 	import { getAxiosError } from '$lib/utils';
 	import axios from 'axios';
@@ -17,7 +18,7 @@
 	});
 </script>
 
-<a href="/magazines" class="block h-full w-full bg-linear-to-t from-green-200 to-white">
+<a href={resolve('/magazines')} class="block h-full w-full bg-linear-to-t from-green-200 to-white">
 	{#if loading}
 		<div class="flex h-full w-full items-center justify-center">
 			<Loading class="size-4" />

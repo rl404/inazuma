@@ -9,7 +9,7 @@
 	<div>Magazine</div>
 	<select bind:value class="w-full border border-black bg-white p-1">
 		<option value="">All</option>
-		{#each magazines as magazine}
+		{#each magazines as magazine (magazine.id)}
 			<option value={magazine.id.toString()}>{magazine.name}</option>
 		{/each}
 	</select>
