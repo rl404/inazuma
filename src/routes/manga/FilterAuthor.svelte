@@ -71,7 +71,7 @@
 			use:clickAway
 			on:clickAway={onClickAway}
 		>
-			{#each data as author}
+			{#each data as author (author.id)}
 				<button
 					title={formatAuthor(author.first_name, author.last_name)}
 					class="w-full px-1 text-left text-xs break-all hover:bg-neutral-200"

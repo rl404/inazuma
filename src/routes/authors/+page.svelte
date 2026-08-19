@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterNavigate, goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page as appPage } from '$app/state';
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import Head from '$lib/components/commons/Head.svelte';
@@ -66,14 +67,14 @@
 
 	const onSearch = () => {
 		page = 1;
-		goto(`?name=${name}`);
+		goto(resolve(`/authors?name=${name}`));
 	};
 </script>
 
 <Head title="Author List" />
 
 <svelte:head>
-	<link rel="canonical" href={`https://inazuma.rl404.com/authors`} />
+	<link rel="canonical" href="https://inazuma.rl404.com/authors" />
 </svelte:head>
 
 <PortraitPage>
@@ -94,9 +95,9 @@
 				<SearchIcon class="size-4 lg:size-5" />
 			</IconButton>
 		</div>
-		{#each data.slice(0, limit) as author}
+		{#each data.slice(0, limit) as author (author.id)}
 			<a
-				href="/manga?author_id={author.id}"
+				href={resolve(`/manga?author_id=${author.id}`)}
 				title={formatAuthor(author.first_name, author.last_name)}
 				class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-blue-50 p-1 text-center lg:p-2"
 			>
@@ -111,12 +112,12 @@
 	</div>
 </PortraitPage>
 
-{#each newPageData.slice(1) as newPage}
+{#each newPageData.slice(1) as newPage, i (i)}
 	<PortraitPage>
 		<div class="grid grid-cols-5 gap-1">
-			{#each newPage as author}
+			{#each newPage as author (author.id)}
 				<a
-					href="/manga?author_id={author.id}"
+					href={resolve(`/manga?author_id=${author.id}`)}
 					title={formatAuthor(author.first_name, author.last_name)}
 					class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-blue-50 p-1 text-center lg:p-2"
 				>

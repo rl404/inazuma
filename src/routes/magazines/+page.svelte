@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { afterNavigate, goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 	import { page as appPage } from '$app/state';
 	import IconButton from '$lib/components/buttons/IconButton.svelte';
 	import Head from '$lib/components/commons/Head.svelte';
@@ -66,14 +67,14 @@
 
 	const onSearch = () => {
 		page = 1;
-		goto(`?name=${name}`);
+		goto(resolve(`/magazines?name=${name}`));
 	};
 </script>
 
 <Head title="Magazine List" />
 
 <svelte:head>
-	<link rel="canonical" href={`https://inazuma.rl404.com/magazines`} />
+	<link rel="canonical" href="https://inazuma.rl404.com/magazines" />
 </svelte:head>
 
 <PortraitPage>
@@ -94,9 +95,9 @@
 				<SearchIcon class="size-4 lg:size-5" />
 			</IconButton>
 		</div>
-		{#each data.slice(0, limit) as magazine}
+		{#each data.slice(0, limit) as magazine, i (i)}
 			<a
-				href="/manga?magazine_id={magazine.id}"
+				href={resolve(`/manga?magazine_id=${magazine.id}`)}
 				title={magazine.name}
 				class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-green-50 p-1 text-center lg:p-2"
 			>
@@ -111,12 +112,12 @@
 	</div>
 </PortraitPage>
 
-{#each newPageData.slice(1) as newPage}
+{#each newPageData.slice(1) as newPage, i (i)}
 	<PortraitPage>
 		<div class="grid grid-cols-5 gap-1">
-			{#each newPage as magazine}
+			{#each newPage as magazine (magazine.id)}
 				<a
-					href="/manga?magazine_id={magazine.id}"
+					href={resolve(`/manga?magazine_id=${magazine.id}`)}
 					title={magazine.name}
 					class="flex aspect-video items-center justify-center border-2 border-black bg-linear-to-r from-white to-green-50 p-1 text-center lg:p-2"
 				>

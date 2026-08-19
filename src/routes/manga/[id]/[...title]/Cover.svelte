@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { PUBLIC_MAL_HOST } from '$env/static/public';
 	import Image from '$lib/components/commons/Image.svelte';
 	import { toURL } from '$lib/utils';
@@ -23,7 +24,7 @@
 		<a
 			href="{PUBLIC_MAL_HOST}/manga/{manga.id}/{toURL(manga.title)}"
 			target="_blank"
-			rel="noreferral"
+			rel="external"
 			class="text-shadow text-xl font-bold shadow-white lg:text-3xl"
 		>
 			{manga.title}
@@ -31,10 +32,10 @@
 	</div>
 
 	<div class="absolute top-4 right-4 grid w-1/2 p-4 text-right">
-		{#each manga.authors as author}
+		{#each manga.authors as author (author.id)}
 			<a
 				title={author.role}
-				href="/manga?author_id={author.id}"
+				href={resolve(`/manga?author_id=${author.id}`)}
 				class="text-shadow font-bold shadow-white lg:text-lg"
 			>
 				{author.name}
@@ -43,9 +44,9 @@
 	</div>
 
 	<div class="absolute top-4 left-4 grid w-1/2 p-4">
-		{#each manga.serialization as magazine}
+		{#each manga.serialization as magazine (magazine.id)}
 			<a
-				href="/manga?magazine_id={magazine.id}"
+				href={resolve(`/manga?magazine_id=${magazine.id}`)}
 				class="text-shadow font-bold shadow-white lg:text-lg"
 			>
 				{magazine.name}

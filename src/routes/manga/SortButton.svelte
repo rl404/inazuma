@@ -43,7 +43,7 @@
 		<div
 			class="absolute top-full right-0 z-10 mt-1 grid w-36 gap-1 border-2 border-black bg-linear-to-t from-red-200 to-white p-1 text-xs lg:w-48 lg:text-base"
 		>
-			{#each sorts as sort}
+			{#each sorts as sort (sort.value)}
 				<label>
 					<input type="radio" bind:group={value} value={sort.value} on:change={onChange} />
 					{sort.label}

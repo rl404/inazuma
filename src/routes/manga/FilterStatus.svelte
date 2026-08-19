@@ -10,7 +10,7 @@
 	<div>Status</div>
 	<select bind:value class="w-full border border-black bg-white p-1">
 		<option value="">All</option>
-		{#each statuses as status}
+		{#each statuses as status (status)}
 			<option value={status}>{mangaStatuses(status)}</option>
 		{/each}
 	</select>

@@ -66,7 +66,7 @@
 			element = component.parentNode;
 		}
 
-		hasMore && onLoadMore();
+		if (hasMore) onLoadMore();
 	});
 
 	onDestroy(() => {
