@@ -1,0 +1,8 @@
+services:
+  inazuma:
+    container_name: inazuma
+    image: rl404/inazuma:latest
+    build: .
+    restart: always
+    env_file: .env
+    network_mode: host
