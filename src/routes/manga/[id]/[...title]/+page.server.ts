@@ -1,4 +1,4 @@
-import { HIBIKI_HOST } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { handleAPIResponse } from '$lib/utils';
 import type { PageServerLoad } from './$types';
 
@@ -9,6 +9,6 @@ export const config = {
 };
 
 export const load = (async ({ params }) => {
-	const resp = await fetch(`${HIBIKI_HOST}/manga/${params.id}`);
+	const resp = await fetch(`${env.HIBIKI_HOST}/manga/${params.id}`);
 	return await handleAPIResponse(resp);
 }) satisfies PageServerLoad;

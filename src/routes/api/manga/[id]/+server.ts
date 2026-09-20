@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { HIBIKI_HOST } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 export type MangaResponse = {
 	status: number;
@@ -61,7 +61,7 @@ type date = {
 };
 
 export const GET = (async ({ params }) => {
-	const resp = await fetch(`${HIBIKI_HOST}/manga/${params.id}`);
+	const resp = await fetch(`${env.HIBIKI_HOST}/manga/${params.id}`);
 	const data = await resp.json();
 	return new Response(JSON.stringify(data), {
 		headers: {

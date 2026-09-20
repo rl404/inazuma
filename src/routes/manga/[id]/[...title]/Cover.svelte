@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { PUBLIC_MAL_HOST } from '$env/static/public';
+	import { env } from '$env/dynamic/public';
 	import Image from '$lib/components/commons/Image.svelte';
 	import { toURL } from '$lib/utils';
 	import { twMerge } from 'tailwind-merge';
@@ -22,7 +22,7 @@
 
 	<div class="absolute right-4 bottom-4 w-3/4 p-4 text-right">
 		<a
-			href="{PUBLIC_MAL_HOST}/manga/{manga.id}/{toURL(manga.title)}"
+			href="{env.PUBLIC_MAL_HOST}/manga/{manga.id}/{toURL(manga.title)}"
 			target="_blank"
 			rel="external"
 			class="text-shadow text-xl font-bold shadow-white lg:text-3xl"

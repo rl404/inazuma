@@ -1,4 +1,4 @@
-import { HIBIKI_HOST } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import { handleAPIResponse } from '$lib/utils';
 import type { GenresResponse } from '../api/genres/+server';
 import type { MagazinesResponse } from '../api/magazines/+server';
@@ -17,8 +17,8 @@ export const config = {
 
 export const load = (async () => {
 	const [magazineResp, genreResp] = await Promise.all([
-		await fetch(`${HIBIKI_HOST}/magazines?limit=-1`),
-		await fetch(`${HIBIKI_HOST}/genres?limit=-1`)
+		await fetch(`${env.HIBIKI_HOST}/magazines?limit=-1`),
+		await fetch(`${env.HIBIKI_HOST}/genres?limit=-1`)
 	]);
 	return {
 		magazines: await handleAPIResponse(magazineResp),

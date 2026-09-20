@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { HIBIKI_HOST } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { MangaResponseData } from './[id]/+server';
 
 export type MangasResponse = {
@@ -27,7 +27,7 @@ export const GET = (async ({ url }) => {
 		.map((q) => `${q}=${url.searchParams.get(q) ?? ''}`)
 		.join('&');
 
-	const resp = await fetch(`${HIBIKI_HOST}/manga?${queries}`);
+	const resp = await fetch(`${env.HIBIKI_HOST}/manga?${queries}`);
 	const data = await resp.json();
 	return new Response(JSON.stringify(data), {
 		headers: {
