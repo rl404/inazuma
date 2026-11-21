@@ -71,7 +71,7 @@
 	};
 </script>
 
-<Head title="Magazine List" />
+<Head title="Magazine List" description="Search manga magazine in manga style." />
 
 <svelte:head>
 	<link rel="canonical" href="https://inazuma.rl404.com/magazines" />

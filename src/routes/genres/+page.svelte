@@ -71,7 +71,7 @@
 	};
 </script>
 
-<Head title="Genre List" />
+<Head title="Genre List" description="Search manga genre in manga style." />
 
 <svelte:head>
 	<link rel="canonical" href="https://inazuma.rl404.com/genres" />
