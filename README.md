@@ -1,5 +1,9 @@
 # Inazuma
 
+<p align="center">
+    <img src="https://raw.githubusercontent.com/rl404/inazuma/master/static/home.png">
+</p>
+
 _Inazuma_ is a simple website to view manga data from [MyAnimeList](https://myanimelist.net) in manga style.
 
 ## Requirement
@@ -11,22 +15,22 @@ _Inazuma_ is a simple website to view manga data from [MyAnimeList](https://myan
 
 1. Clone the repo.
 
-```sh
-git clone https://github.com/rl404/inazuma
-```
+   ```sh
+   git clone https://github.com/rl404/inazuma
+   ```
 
 2. Rename `.env.sample` to `.env` and modify the value according to your setup.
 3. Install depedencies.
 
-```sh
-npm ci
-```
+   ```sh
+   npm i
+   ```
 
 4. Start.
 
-```sh
-npm run dev
-```
+   ```sh
+   npm run dev
+   ```
 
 5. [http://localhost:5173](http://localhost:5173) is ready.
 

@@ -122,7 +122,7 @@
 	};
 </script>
 
-<Head title="Manga List" />
+<Head title="Manga List" description="Search manga in manga style." />
 
 <svelte:head>
 	<link rel="canonical" href="https://inazuma.rl404.com/manga" />

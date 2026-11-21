@@ -71,7 +71,7 @@
 	};
 </script>
 
-<Head title="Author List" />
+<Head title="Author List" description="Search manga author in manga style." />
 
 <svelte:head>
 	<link rel="canonical" href="https://inazuma.rl404.com/authors" />

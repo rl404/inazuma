@@ -3,6 +3,6 @@ services:
     container_name: inazuma
     image: rl404/inazuma:latest
     build: .
-    restart: always
+    restart: unless-stopped
     env_file: .env
     network_mode: host
